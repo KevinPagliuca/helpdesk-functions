@@ -8,13 +8,13 @@
 .button-container button {
     width: 100%;
     padding: 8px 15px;
-    background: #232727;
+    background: linear-gradient(90deg, rgba(0, 153, 255, 1) 0%, rgba(103, 216, 166, 1) 75%);
     font: 500 16px Poppins;
     color: #fff;
     border-radius: 4px;
 }
 
-.button-container button:hover {
-    background: #f31212;
-    transition: all .3s ease;
+.button-container button:hover {   
+background: linear-gradient(90deg, rgba(255,255,65) 0%, rgba(255,65,65) 75%);
+transition: all 0.5s;
 }

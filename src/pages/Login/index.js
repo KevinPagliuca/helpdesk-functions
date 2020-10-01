@@ -21,6 +21,7 @@ const Login = () => {
             localStorage.setItem('email', res.data.email);
             localStorage.setItem('name', res.data.name);
             localStorage.setItem('role', res.data.role);
+            localStorage.setItem('dept', res.data.dept);
             if(res.data.permission !== "1") {
                 history.push('/myaccount');
             } else {
