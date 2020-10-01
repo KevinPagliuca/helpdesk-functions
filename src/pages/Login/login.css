@@ -1,0 +1,34 @@
+#login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#login form {
+    display: flex;
+    flex-direction: column;
+}
+
+#login form h3 {
+    font: 700 28px Poppins;
+}
+
+
+.more-infos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    font: 500 13px Poppins;
+}
+
+.more-infos a {
+    font: 600 14px Poppins;
+    color: rgb(53, 53, 53);
+}
+
+.more-infos a:hover {
+    color: #f31212;
+    transition: color .3s;
+}

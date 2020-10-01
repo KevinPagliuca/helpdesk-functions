@@ -1,0 +1,17 @@
+#register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+#register form {
+    display: flex;
+    flex-direction: column;
+}
+
+#register form h3 {
+    font: 700 28px Poppins;
+}
