@@ -41,14 +41,15 @@
 .nav-container ul li {
     margin-right: 15px;
     background: #33adff;
-    border-radius: 20px;
+    border-radius: 20px;       
     padding: 10px;
 }
 
 .nav-container ul li a {
     text-decoration: none;
     font: 500 16px Archivo;
-    color: #ffffff;
+    color: #ffffff;    
+    padding: 10px;
 }
 
 .nav-container .user-content {
