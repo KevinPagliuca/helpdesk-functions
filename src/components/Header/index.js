@@ -7,6 +7,12 @@ import userImg from '../../assets/user.png';
 import './header.css';
 
 const Header = () => {
+
+    function handleShowDropDown(e) {
+        e.preventDefault();
+        
+        document.getElementById('myDropdown').className('dropdown-content', 'show');
+    }
     return (
         <header id="header">
             <nav className="navbar">
@@ -21,8 +27,14 @@ const Header = () => {
                         <li><Link to="/myaccount">Chamados em aberto</Link></li>
                     </ul>
 
-                    <div className="user-content">
-                        <img src={userImg} alt="userimg" />
+
+                    <div className="dropdown">
+                        <img src={userImg} alt="userImg" />
+                        <div id="myDropdown" className="dropdown-content">
+                            <Link to="">Home</Link>
+                            <Link to="">About</Link>
+                            <Link to="/logout">Logout</Link>
+                        </div>
                     </div>
                 </div>
             </nav>

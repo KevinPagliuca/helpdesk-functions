@@ -40,32 +40,66 @@
 
 .nav-container ul li {
     margin-right: 15px;
-    background: #33adff;
-    border-radius: 20px;       
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
     padding: 10px;
 }
 
 .nav-container ul li a {
     text-decoration: none;
     font: 500 16px Archivo;
-    color: #ffffff;    
+    color: #ffffff;
     padding: 10px;
 }
 
-.nav-container .user-content {
+.nav-container ul li:hover {
+    background: rgb(0, 153, 255);
+}
+
+.dropdown img {
     width: 74px;
     height: 74px;
     border-radius: 50%;
-}
-
-.user-content img {
-    width: 74px;
-    height: 74px;
-    border-radius: 50%;    
     background: #bbb;
     border: 2px solid rgb(0, 153, 255);
 }
 
-.user-content:hover img {
-    border-color: linear-gradient(90deg, rgb(255,255,65) 0%, rgb(255,65,65) 75%);
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    right: 0;
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    font: 400 16px Poppins;
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+}
+
+.dropdown-content a:last-child {
+    border-bottom: 0;
+}
+
+.dropdown a:hover {
+    font: 600 16px Poppins;
+    background: rgb(0, 153, 255);
+}
+
+.dropdown:hover .dropdown-content{
+    display: block;
 }
