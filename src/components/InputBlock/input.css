@@ -5,11 +5,16 @@
     font: 400 14px Poppins;
 }
 
+.input-block > label + input {
+    margin-top: 10px;
+}
+
 .input-block input {
     width: 100%;
     padding: 15px;
     border: 2px solid #ebebeb;
     border-radius: 4px;
+    box-shadow: 0 0 10px rgb(103, 216, 166);
 }
 
 .input-block input:focus {

@@ -55,11 +55,16 @@
     width: 74px;
     height: 74px;
     border-radius: 50%;
-    background: #bbb;
 }
 
 .user-content img {
     width: 74px;
     height: 74px;
-    border-radius: 50%;
+    border-radius: 50%;    
+    background: #bbb;
+    border: 2px solid rgb(0, 153, 255);
+}
+
+.user-content:hover img {
+    border-color: linear-gradient(90deg, rgb(255,255,65) 0%, rgb(255,65,65) 75%);
 }

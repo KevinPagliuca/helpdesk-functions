@@ -7,12 +7,14 @@ import accountSvg from '../../assets/account.svg';
 
 import './myaccount.css';
 
+import AvatarImg from '../../components/Styles/Avatar';
+import { FaLock } from 'react-icons/fa';
+
 const Myaccount = () => {
     const [name, setName] = useState(localStorage.getItem('name'));
     const [email, setEmail] = useState(localStorage.getItem('email'));
     const [dept, setDept] = useState(localStorage.getItem('dept'));
     const [role, setRole] = useState(localStorage.getItem('role'));
-    const [password, setPassword] = useState('');
 
     return (
         <div id="myaccount">
@@ -21,6 +23,9 @@ const Myaccount = () => {
                 <div className="userdata">
                     <h3>Meus dados</h3>
                     <form>
+
+                        <AvatarImg />
+
                         <InputBlock
                             id="name"
                             label="Nome Completo"
@@ -54,17 +59,20 @@ const Myaccount = () => {
                             readOnly
                             value={role}
                             onChange={e => setRole(e.target.value)}
-                        />                        
+                        />
 
                         <div className="button-container">
-                            <button type="submit">Alterar Dados</button>
+                            <button type="submit">
+                                <FaLock size={22} />
+                                Alterar Dados
+                            </button>
                         </div>
 
                     </form>
                 </div>
 
                 <div className="account-svg">
-                    <img src={accountSvg} height={400} width={400} alt="" />
+                    <img src={accountSvg} height={530} width={450} alt="accountSvg" />
                 </div>
             </main>
         </div>
