@@ -24,9 +24,79 @@
 
 #mytickets .container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   max-width: 1100px;
   width: 100%;
   margin-top: 50px;
+  margin-bottom: 30px;
 }
+
+#mytickets .container .tickets-svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 100px;
+  height: 100%;
+}
+
+#mytickets .container .tickets {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+  background: rgb(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.tickets .content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 153, 255);
+  margin-bottom: 15px;
+  text-decoration: none;
+}
+
+.tickets .content:last-child {
+  margin-bottom: 0;
+}
+
+.tickets .content .subject {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  width: 100%;
+  border-bottom: 2px solid #fff;
+}
+
+.tickets .content .subject strong {
+  font: 500 16px Poppins;
+  color: #fff;
+}
+
+.tickets .content .info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.tickets .content .info div > strong {
+  font: 500 16px Poppins;
+  color: #fff;
+}
+
+.tickets .content .info div > p {
+  font: 400 14px Poppins;
+  color: #000;
+}
+
