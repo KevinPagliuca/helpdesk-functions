@@ -4,17 +4,13 @@
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    /* background: url('../../assets/blob.svg');
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover; */
     background: linear-gradient(90deg, rgba(14, 92, 173, 1) 0%, rgba(16, 95, 173, 1) 19%, rgba(24, 105, 172, 1) 36%, rgba(36, 123, 171, 1) 51%, rgba(53, 147, 170, 1) 65%, rgba(76, 178, 168, 1) 79%, rgba(103, 216, 166, 1) 92%, rgba(121, 241, 164, 1) 100%);
     /* background: radial-gradient(circle, rgba(14,92,173,1) 0%, rgba(16,95,173,1) 19%, rgba(24,105,172,1) 36%, rgba(36,123,171,1) 51%, rgba(53,147,170,1) 65%, rgba(76,178,168,1) 79%, rgba(103,216,166,1) 92%, rgba(121,241,164,1) 100%); */
 }
 
 #myaccount .container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     max-width: 1100px;
     width: 100%;
@@ -30,14 +26,19 @@
     color: #fff;
 }
 
-#myaccount .container .userdata h3 {
+#myaccount h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    max-width: 1100px;
+    background: rgb(0,0,0,0.5);
     font: 500 28px Poppins;
     text-align: center;
     width: 100%;
-    max-width: 350px;
-    /* background: linear-gradient(90deg, rgba(255,255,65) 0%, rgba(255,65,65) 75%);
-    background-clip: text;
-    -webkit-text-fill-color: transparent; */
+    border-radius: 8px;
+    color: #fff;
+    padding: 10px;   
 }
 
 #myaccount .container .userdata .input-block {
@@ -49,7 +50,6 @@
     align-items: center;
     justify-content: center;
     margin-left: 100px;
-    margin-top: 50px;
     height: 100%;
 }
 
