@@ -17,18 +17,19 @@ const Header = () => {
 
                 <div className="nav-container">
                     <ul>                  
-                        <li><Link to="/myaccount">Novo chamado</Link></li>
-                        <li><Link to="/myaccount">Meus chamados</Link></li>
-                        <li><Link to="/myaccount">Chamados em aberto</Link></li>
+                        <li><Link to="/newticket">Dashboard</Link></li>
+                        <li><Link to="/newticket">Novo chamado</Link></li>
+                        <li><Link to="/mytickets">Meus chamados</Link></li>
+                        <li><Link to="/alltickets">Todos os chamados</Link></li>
                     </ul>
 
 
                     <div className="dropdown">
                         <img src={userImg} alt="userImg" />
                         <div id="myDropdown" className="dropdown-content">
-                            <Link to="">Minha conta</Link>
-                            <Link to="">Sugestões</Link>
-                            <Link to="">Ajuda</Link>
+                            <Link to="/myaccount">Minha conta</Link>
+                            <Link to="/suggest">Sugestões</Link>
+                            <Link to="/faq">Ajuda</Link>
                             <Link to="/logout">Sair</Link>
                         </div>
                     </div>

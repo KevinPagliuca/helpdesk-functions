@@ -14,11 +14,11 @@
     padding: 15px;
     border: 2px solid #ebebeb;
     border-radius: 4px;
-    box-shadow: 0 0 5px rgb(103, 216, 166);
+    box-shadow: 0 0 5px rgb(33, 34,34);
 }
 
 .input-block input:focus {
-    border: 2px solid rgb(95, 225, 95);    
-    box-shadow: 0 0 15px rgb(2, 255, 141);
+    border: 2px solid rgb(22, 21, 24);    
+    box-shadow: 0 0 15px rgb(33, 34, 34);
     transition: all 0.3s ease-in-out;
 }

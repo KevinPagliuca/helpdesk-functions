@@ -54,6 +54,8 @@
 
 .nav-container ul li:hover {
     background: rgb(0, 153, 255);
+    box-shadow: 0 0 10px rgb(0, 153, 255);
+    transition: all .3s ease-in-out;
 }
 
 .dropdown img {
@@ -62,6 +64,13 @@
     border-radius: 50%;
     background: #bbb;
     border: 2px solid rgb(0, 153, 255);
+    box-shadow: 0 0 8px rgb(0, 153, 255);
+}
+
+.dropdown:hover img {
+    border: 2px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+    transition: all .3s ease-in-out;
 }
 
 .dropdown {
@@ -98,6 +107,8 @@
 .dropdown a:hover {
     font: 600 16px Poppins;
     background: rgb(0, 153, 255);
+    box-shadow: 0 0 10px rgb(0, 153, 255);
+    transition: all .3s ease-in-out;
 }
 
 .dropdown:hover .dropdown-content{

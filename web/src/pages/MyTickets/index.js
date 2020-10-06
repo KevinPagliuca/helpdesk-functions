@@ -1,14 +1,31 @@
-import React from 'react';
-import { FaTrash } from 'react-icons/fa';
-
-import Header from '../../components/Header';
-
-import MyTicketsImg from '../../assets/mytickets.svg';
-
-import './mytickets.css';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from '../../components/Header';
+import TicketItem from '../../components/TicketItem';
+import MyTicketsImg from '../../assets/mytickets.svg';
+
+import api from '../../services/api';
+import './mytickets.css';
+
 const MyTickets = () => {
+  const [listTickets, setLisTickets] = useState([]);
+
+  const user_id = localStorage.getItem('user_id');
+
+  useEffect(() => {
+    async function LoadTickets() {
+      const resp = await api.get('mytickets', {
+        headers: {
+          user_id: 1
+        }
+      });
+      setLisTickets(resp.data);
+    }
+    LoadTickets();
+  }, [user_id]);
+
+
   return (
     <div id="mytickets">
       <Header />
@@ -21,45 +38,29 @@ const MyTickets = () => {
         </div>
 
         <div className="tickets">
-          
-          <Link className="content" to="/mytickets">
-            <div className="subject">
-              <strong>Alteração na tableta de quota ZSDFORECASTEX</strong>
-              <div className="options">
-                <FaTrash color={'#ff0000'} size={18} />
-              </div>
+          {listTickets.length !== 0
+            ?
+            listTickets.map(ticket => (
+              <TicketItem                
+                id={ticket.id}
+                subject={ticket.subject}
+                assignTo={ticket.assignTo}
+                duedate={ticket.duedate}
+                priority={ticket.priority}
+                category={ticket.category}
+                status={ticket.status}
+              
+              />
+            ))
+            :
+            <div className="error-ticket">
+              <h4>Você não tem nenhum chamado cadastrado para
+                  ser listado, <Link to="newticket">Clique Aqui</Link> para começar!
+              </h4>
             </div>
-
-            <div className="info">
-              <div>
-                <strong>Assinado para</strong>
-                <p>Kevin Pagliuca</p>
-              </div>
-
-              <div>
-                <strong>Vencimento</strong>
-                <p>13/10/1999</p>
-              </div>
-
-              <div>
-                <strong>Prioridade</strong>
-                <p>Alta</p>
-              </div>
-
-              <div>
-                <strong>Status</strong>
-                <p>Em progresso...</p>
-              </div>
-
-              <div>
-                <strong>Categoria</strong>
-                <p>E-mail</p>
-              </div>
-
-            </div>
-          </Link>
-       
+          }
         </div>
+
       </div>
     </div>
   );

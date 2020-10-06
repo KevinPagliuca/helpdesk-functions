@@ -18,10 +18,11 @@ const Login = () => {
             email, password
         }).then((res) => {
             console.log(res.data);
-            localStorage.setItem('email', res.data.email);
-            localStorage.setItem('name', res.data.name);
-            localStorage.setItem('role', res.data.role);
-            localStorage.setItem('dept', res.data.dept);
+            localStorage.setItem('user_email', res.data.email);
+            localStorage.setItem('user_name', res.data.name);
+            localStorage.setItem('user_role', res.data.role);
+            localStorage.setItem('user_dept', res.data.dept);
+            localStorage.setItem('user_id', res.data.id);
             if(res.data.permission !== "1") {
                 history.push('/myaccount');
             } else {

@@ -51,52 +51,17 @@
   border-radius: 8px;
 }
 
-.tickets .content {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-  border-radius: 4px;
-  width: 100%;
-  height: 100%;
-  background: rgb(0, 153, 255);
-  margin-bottom: 15px;
-  text-decoration: none;
-}
-
-.tickets .content:last-child {
-  margin-bottom: 0;
-}
-
-.tickets .content .subject {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  width: 100%;
-  border-bottom: 2px solid #fff;
-}
-
-.tickets .content .subject strong {
-  font: 500 16px Poppins;
+.error-ticket h4 {
+  font: 500 20px Poppins;
   color: #fff;
 }
 
-.tickets .content .info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 15px;
-  width: 100%;
+.error-ticket h4 a {
+  font: 700 22px Poppins;
+  color: rgba(121, 241, 164, 1);
 }
 
-.tickets .content .info div > strong {
-  font: 500 16px Poppins;
-  color: #fff;
+.error-ticket h4 a:hover {
+  color: rgb(0, 153, 255);
+  transition: color .3s ease-in-out;
 }
-
-.tickets .content .info div > p {
-  font: 400 14px Poppins;
-  color: #000;
-}
-
