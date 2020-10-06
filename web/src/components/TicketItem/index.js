@@ -8,7 +8,7 @@ import './ticket.css';
 
 const TicketItem = (props) => {
     return (
-        <Link key={props.id} className="content" to="/mytickets">
+        <Link className="content" to="/mytickets">
             <div className="subject">
                 <strong>{props.subject}</strong>
                 <div className="options">

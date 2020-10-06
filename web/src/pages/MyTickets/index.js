@@ -41,7 +41,8 @@ const MyTickets = () => {
           {listTickets.length !== 0
             ?
             listTickets.map(ticket => (
-              <TicketItem                
+              <TicketItem  
+                key={ticket.id}              
                 id={ticket.id}
                 subject={ticket.subject}
                 assignTo={ticket.assignTo}

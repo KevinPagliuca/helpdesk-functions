@@ -17,7 +17,7 @@ const Header = () => {
 
                 <div className="nav-container">
                     <ul>                  
-                        <li><Link to="/newticket">Dashboard</Link></li>
+                        <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><Link to="/newticket">Novo chamado</Link></li>
                         <li><Link to="/mytickets">Meus chamados</Link></li>
                         <li><Link to="/alltickets">Todos os chamados</Link></li>
