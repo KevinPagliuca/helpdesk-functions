@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Myaccount from './pages/Myaccount';
 import MyTickets from './pages/MyTickets';
 import AllTickets from './pages/AllTickets';
+import NewTicket from './pages/NewTicket';
 
 export default function Routes() {
     return(
@@ -16,6 +17,7 @@ export default function Routes() {
                 <Route path="/myaccount" exact component={Myaccount} />
                 <Route path="/mytickets" exact component={MyTickets} />
                 <Route path="/alltickets" exact component={AllTickets} />
+                <Route path="/newticket" exact component={NewTicket} />
             </Switch>
         </BrowserRouter>
     );
