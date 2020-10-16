@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Header from '../../components/Header';
 import InputBlock from '../../components/InputBlock';
@@ -12,7 +12,6 @@ const NewTicket = () => {
     const id = localStorage.getItem('user_id');
     const userName = localStorage.getItem('user_name');
     const email = localStorage.getItem('user_email');
-    const dept = localStorage.getItem('user_dept');
 
     const [subject, setSubject] = useState('');
     const [priority, setPriority] = useState('');
@@ -52,7 +51,7 @@ const NewTicket = () => {
 
             <div className="container">
                 <div className="content-newticket">
-                    <form className="form-newticket">
+                    <form className="form-newticket" onSubmit={handleOpenNewTicket}>
                         <InputBlock
                             id="subject"
                             label="Assunto"
