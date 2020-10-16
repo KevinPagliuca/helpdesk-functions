@@ -1,7 +1,17 @@
 .select-block {
     display: flex;
     flex-direction: column;    
-    font: 400 14px Poppins;
+    font: 500 16px Poppins;
+    margin-top: 10px;
+}
+
+.select-block label {
+    font: 600 16px Poppins;
+    color: #fff;
+}
+
+.select-block > label + select {
+    margin-top: 10px;
 }
 
 .select-block select {

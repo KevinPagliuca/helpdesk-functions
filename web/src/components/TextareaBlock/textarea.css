@@ -1,0 +1,33 @@
+.textarea-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea-block label {
+    padding: 5px 0;
+    margin-top: 10px;
+    font: 600 16px Poppins;
+    color: #fff;
+}
+
+.textarea-block textarea {
+    display: flex;
+    align-items: center;
+    min-height: 200px;
+    padding: 10px 5px;
+    resize: none;
+    border: 0;
+    border-radius: 4px;
+    font: 400 14px Poppins;
+    color: rgb(33, 34, 34);
+}
+
+.textarea-block textarea:focus::placeholder {
+    color: transparent;    
+}
+
+.textarea-block textarea:focus {
+    border: 2px solid rgb(22, 21, 24);
+    box-shadow: 0 0 15px rgb(33, 34, 34);
+    transition: all 0.3s ease-in-out;
+}

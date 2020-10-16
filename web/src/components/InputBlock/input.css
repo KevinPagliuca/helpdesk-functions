@@ -3,6 +3,12 @@
     flex-direction: column;
     width: 350px;
     font: 400 14px Poppins;
+    margin-bottom: 10px;
+}
+
+.input-block label {
+    font: 600 16px Poppins;
+    color: #fff;
 }
 
 .input-block > label + input {

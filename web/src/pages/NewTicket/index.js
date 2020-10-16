@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import Header from '../../components/Header';
 import InputBlock from '../../components/InputBlock';
+import SelectBlock from '../../components/SelectBlock';
+import TextAreaBlock from '../../components/TextareaBlock';
 
 import api from '../../services/api';
 import './newticket.css';
@@ -58,7 +60,138 @@ const NewTicket = () => {
                             type="text"
                             value={subject}
                             onChange={e => setSubject(e.target.value)}
-                         />
+                        />
+
+                        <InputBlock
+                            id="duedate"
+                            label="Vencimento"
+                            type="date"
+                            value={duedate}
+                            onChange={e => setDueDate(e.target.value)}
+                        />
+
+                        <SelectBlock
+                            id="assignTo"
+                            label="Agente"
+                            placeholder="Selecione um agente"
+
+                            options={
+                                [
+                                    {
+                                        value: "Wanderley Santos",
+                                    },
+                                    {
+                                        value: "Kevin Pagliuca"
+                                    },
+                                    {
+                                        value: "André Oliveira"
+                                    },
+                                    {
+                                        value: "Carlos Diogo"
+                                    },
+                                    {
+                                        value: "Carla Garcia"
+                                    }
+                                ]
+                            }
+                        />
+
+                        <SelectBlock
+                            id="category"
+                            label="Categoria"
+                            placeholder="Selecione uma categoria"
+
+                            options={
+                                [
+                                    {
+                                        value: "E-mail"
+                                    },
+                                    {
+                                        value: "SAP"
+                                    },
+                                    {
+                                        value: "Websites"
+                                    },
+                                    {
+                                        value: "Office"
+                                    },
+                                    {
+                                        value: "Computador"
+                                    },
+                                    {
+                                        value: "Excel"
+                                    },
+                                    {
+                                        value: "Outros"
+                                    }
+                                ]
+                            }
+                        />
+
+                        <SelectBlock
+                            id="priority"
+                            label="Prioridade"
+                            placeholder="Selecione uma prioridade"
+
+                            options={
+                                [
+                                    {
+                                        value: "Baixa"
+                                    },
+
+                                    {
+                                        value: "Média"
+                                    },
+
+                                    {
+                                        value: "Alta"
+                                    },
+
+                                    {
+                                        value: "Urgente"
+                                    }
+                                ]
+                            }
+                        />
+
+                        <SelectBlock
+                            id="status"
+                            label="Status"
+                            placeholder="Status desse chamado"
+                            options={
+                                [
+                                    {
+                                        value: "Novo"
+                                    },
+                                    {
+                                        value: "Em aberto"
+                                    },
+                                    {
+                                        value: "Em progresso..."
+                                    },
+                                    {
+                                        value: "Aguardando matriz/usuário"
+                                    },
+                                    {
+                                        value: "Concluído"
+                                    }
+                                ]
+                            }
+                        />
+
+                        <TextAreaBlock
+                            id="description"
+                            label="Descrição do chamado"
+                            placeholder="Faça uma descrição detalhada."
+
+                            value={description}
+                            onChange={e => setDescription(e.target.value)}
+                        />
+
+                        <div className="button-container">
+                            <button type="submit">Solicitar abertura</button>
+                        </div>
+
                     </form>
                 </div>
             </div>
