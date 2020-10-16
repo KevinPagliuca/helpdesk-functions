@@ -9,11 +9,10 @@ import api from '../../services/api';
 import './newticket.css';
 
 const NewTicket = () => {
-    const [id, setId] = useState(localStorage.getItem('user_id'));
-    const [userName, setUserName] = useState(localStorage.getItem('user_name'));
-    const [email, setEmail] = useState(localStorage.getItem('user_email'));
-    const [role, setRole] = useState(localStorage.getItem('user_role'));
-    const [dept, setDept] = useState(localStorage.getItem('user_dept'));
+    const id = localStorage.getItem('user_id');
+    const userName = localStorage.getItem('user_name');
+    const email = localStorage.getItem('user_email');
+    const dept = localStorage.getItem('user_dept');
 
     const [subject, setSubject] = useState('');
     const [priority, setPriority] = useState('');
@@ -75,6 +74,8 @@ const NewTicket = () => {
                             label="Agente"
                             placeholder="Selecione um agente"
 
+                            value={assignTo}
+                            onChange={e => setAssignTo(e.target.value)}
                             options={
                                 [
                                     {
@@ -100,7 +101,8 @@ const NewTicket = () => {
                             id="category"
                             label="Categoria"
                             placeholder="Selecione uma categoria"
-
+                            value={category}
+                            onChange={e => setCategory(e.target.value)}
                             options={
                                 [
                                     {
@@ -132,7 +134,8 @@ const NewTicket = () => {
                             id="priority"
                             label="Prioridade"
                             placeholder="Selecione uma prioridade"
-
+                            value={priority}
+                            onChange={e => setPriority(e.target.value)}
                             options={
                                 [
                                     {
@@ -158,6 +161,8 @@ const NewTicket = () => {
                             id="status"
                             label="Status"
                             placeholder="Status desse chamado"
+                            value={status}
+                            onChange={e => setStatus(e.target.value)}
                             options={
                                 [
                                     {
