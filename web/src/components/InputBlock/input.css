@@ -2,12 +2,12 @@
     display: flex;
     flex-direction: column;
     width: 350px;
-    font: 400 14px Poppins;
     margin-bottom: 10px;
 }
 
 .input-block label {
     font: 600 16px Poppins;
+    text-shadow: 0 0 2px #fff;
     color: #fff;
 }
 
@@ -18,13 +18,16 @@
 .input-block input {
     width: 100%;
     padding: 15px;
-    border: 2px solid #ebebeb;
-    border-radius: 4px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    font: 400 14px Poppins;
     box-shadow: 0 0 5px rgb(33, 34,34);
+    background: rgb(26, 26, 34);
+    color: #fff;
 }
 
 .input-block input:focus {
-    border: 2px solid rgb(22, 21, 24);    
-    box-shadow: 0 0 15px rgb(33, 34, 34);
+    border: 2px solid rgb(0, 153, 255);    
+    box-shadow: 0 0 15px rgb(0, 153, 255);
     transition: all 0.3s ease-in-out;
 }

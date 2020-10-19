@@ -5,8 +5,9 @@
 
 .textarea-block label {
     padding: 5px 0;
-    margin-top: 10px;
-    font: 600 16px Poppins;
+    margin: 10px 0;
+    font: 600 16px Poppins;    
+    text-shadow: 0 0 2px #fff;
     color: #fff;
 }
 
@@ -14,20 +15,25 @@
     display: flex;
     align-items: center;
     min-height: 200px;
-    padding: 10px 5px;
+    padding: 20px;
     resize: none;
-    border: 0;
-    border-radius: 4px;
+    border-radius: 8px;
+    border: 2px solid #333;    
+    background: rgb(26, 26, 34);
+    color: #fff;
     font: 400 14px Poppins;
-    color: rgb(33, 34, 34);
+}
+
+.textarea-block textarea::placeholder {
+    text-shadow: none;
 }
 
 .textarea-block textarea:focus::placeholder {
-    color: transparent;    
+    color: transparent;     
 }
 
 .textarea-block textarea:focus {
-    border: 2px solid rgb(22, 21, 24);
-    box-shadow: 0 0 15px rgb(33, 34, 34);
+    border: 2px solid rgb(0, 153, 255);    
+    box-shadow: 0 0 15px rgb(0, 153, 255);
     transition: all 0.3s ease-in-out;
 }

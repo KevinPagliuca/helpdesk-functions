@@ -10,10 +10,10 @@ import './myaccount.css';
 
 
 const Myaccount = () => {
-    const [name, setName] = useState(localStorage.getItem('name'));
-    const [email, setEmail] = useState(localStorage.getItem('email'));
-    const [dept, setDept] = useState(localStorage.getItem('dept'));
-    const [role, setRole] = useState(localStorage.getItem('role'));
+    const [name, setName] = useState(localStorage.getItem('user_name'));
+    const [email, setEmail] = useState(localStorage.getItem('user_email'));
+    const [dept, setDept] = useState(localStorage.getItem('user_dept'));
+    const [role, setRole] = useState(localStorage.getItem('user_role'));
 
     return (
         <div id="myaccount">

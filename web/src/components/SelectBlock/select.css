@@ -6,7 +6,8 @@
 }
 
 .select-block label {
-    font: 600 16px Poppins;
+    font: 600 16px Poppins;    
+    text-shadow: 0 0 2px #fff;
     color: #fff;
 }
 
@@ -17,11 +18,15 @@
 .select-block select {
     width: 100%;
     padding: 15px;
-    border: 2px solid #ebebeb;
-    border-radius: 4px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background: rgb(26, 26, 34);
+    color: #fff;
+    font: 400 14px Poppins;
 }
 
 .select-block select:focus {
-    border: 2px solid #333333;
-    transition: all 0.3s;
+    border: 2px solid rgb(0, 153, 255);    
+    box-shadow: 0 0 15px rgb(0, 153, 255);
+    transition: all 0.3s ease-in-out;
 }

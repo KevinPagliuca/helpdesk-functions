@@ -12,9 +12,11 @@
     font: 500 16px Poppins;
     color: #fff;
     border-radius: 4px;
+    text-shadow: 0 0 50px rgb(0, 0, 0);
 }
 
 .button-container button:hover {
     background: linear-gradient(90deg, rgb(255, 255, 65) 0%, rgb(255, 65, 65) 75%);
+    text-shadow: 0 0 50px rgb(0, 153, 255);
     transition: all 0.5s;
 }

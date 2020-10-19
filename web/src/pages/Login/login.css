@@ -12,7 +12,13 @@
 }
 
 #login form h3 {
-    font: 700 28px Poppins;
+    font: 700 28px Poppins;    
+    text-shadow: 0 0 3px rgb(24, 24, 24);
+}
+
+#login form label {
+    color: #000;
+    text-shadow: 0 0 3px rgb(24, 24, 24);
 }
 
 
