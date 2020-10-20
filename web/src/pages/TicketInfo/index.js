@@ -15,19 +15,22 @@ const TicketInfo = () => {
     useEffect(() => {
         api.get(`ticket/${id}`)
             .then((res => {
-                setTicket(res.data);
+                setTicket(res.data[0]);
             })).catch((err) => {
                 alert(err)
             })
     }, [id]);
 
+   
     return (
         <div id="ticket-info">
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">
                 <div className="content-ticket">
-
+                    <div className="header-ticket">
+                        <h4>{ticket.subject}</h4>
+                    </div>
                 </div>
             </div>
         </div>
