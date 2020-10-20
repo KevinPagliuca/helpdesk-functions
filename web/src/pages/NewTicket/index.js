@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import InputBlock from '../../components/InputBlock';
@@ -21,6 +22,8 @@ const NewTicket = () => {
     const [status, setStatus] = useState('');
     const [description, setDescription] = useState('');
 
+    const history = useHistory();
+
     async function handleOpenNewTicket(e) {
         e.preventDefault();
         api.post('newticket', {
@@ -38,7 +41,8 @@ const NewTicket = () => {
                 user_id: id
             }
         }).then((res) => {
-            alert('Chamado cadastrado com sucesso' + res)
+            alert('Chamado cadastrado com sucesso');
+            history.push(`/ticket/${res.data.id}`);
         }).catch((err) => {
             alert(err);
         })

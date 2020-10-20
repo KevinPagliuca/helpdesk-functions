@@ -7,6 +7,7 @@ import Myaccount from './pages/Myaccount';
 import MyTickets from './pages/MyTickets';
 import AllTickets from './pages/AllTickets';
 import NewTicket from './pages/NewTicket';
+import TicketInfo from './pages/TicketInfo';
 
 export default function Routes() {
     return(
@@ -18,6 +19,7 @@ export default function Routes() {
                 <Route path="/mytickets" exact component={MyTickets} />
                 <Route path="/alltickets" exact component={AllTickets} />
                 <Route path="/newticket" exact component={NewTicket} />
+                <Route path="/ticket/:id" exact component={TicketInfo} />
             </Switch>
         </BrowserRouter>
     );

@@ -1,4 +1,4 @@
-#alltickets {
+#ticket-info {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -8,7 +8,7 @@
     background: rgb(23, 24, 25);
 }
 
-#alltickets h3 {
+#ticket-info h3 {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -23,7 +23,7 @@
     padding: 10px;
 }
 
-#alltickets .container {
+#ticket-info .container {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -33,21 +33,11 @@
     margin-bottom: 30px;
 }
 
-/* #alltickets .container .tickets-svg {
+#ticket-info .content-ticket {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 100px;
-    height: 100%;
-} */
-
-#alltickets .container .tickets {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding: 15px;
-    width: 100%;
-    background: rgb(0, 0, 0, 0.5);
-    border-radius: 8px;
-}
+    width: 450px;
+    min-height: 200px;
+    background: rgb(0, 0, 0, 0.7);
+} 

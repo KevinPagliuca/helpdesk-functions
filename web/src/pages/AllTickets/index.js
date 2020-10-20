@@ -44,16 +44,18 @@ const AllTickets = (props) => {
                         ))
                         :
                         <div className="error-ticket">
-                            <h4>Você não tem nenhum chamado cadastrado para
-                            ser listado, <Link to="newticket">Clique Aqui</Link> para começar!
+                            <h4>Não temos nenhum chamado cadastrado no nosso sistema, Seja
+                            o primeiro!! <br /><Link to="newticket">Clique Aqui para começar!</Link>
+                                <br />
+                             <p style={{color: 'rgb(0, 153, 255)'}}>#bethefirst</p>
                             </h4>
                         </div>
                     }
                 </div>
-
+                {/* 
                 <div className="tickets-svg">
                     <img src={MyTicketsImg} alt="mytickets-svg" width={350} />
-                </div>
+                </div> */}
 
             </div>
         </div>

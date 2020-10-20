@@ -33,9 +33,9 @@ const MyTickets = () => {
 
       <div className="container">
 
-        <div className="tickets-svg">
+        {/* <div className="tickets-svg">
           <img src={MyTicketsImg} alt="mytickets-svg" width={350} />
-        </div>
+        </div> */}
 
         <div className="tickets">
           {listTickets.length !== 0
