@@ -7,6 +7,7 @@ import Header from '../../components/Header';
 import './ticketinfo.css';
 
 import api from '../../services/api';
+import ModalReply from './ModalReply';
 
 const TicketInfo = () => {
     const [ticket, setTicket] = useState([]);
@@ -27,6 +28,7 @@ const TicketInfo = () => {
 
     return (
         <div id="ticket-info">
+            <ModalReply />
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">

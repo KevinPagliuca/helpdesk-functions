@@ -18,20 +18,21 @@
 
 #login form label {
     color: #000;
-    text-shadow: 0 0 3px rgb(24, 24, 24);
+    text-shadow: 0 0 2px rgb(24, 24, 24);
 }
-
 
 .more-infos {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     font: 500 13px Poppins;
+    text-shadow: 0 0 2px rgb(24, 24, 24);
 }
 
 .more-infos a {
     font: 600 14px Poppins;
     color: rgb(53, 53, 53);
+    text-shadow: 0 0 2px rgb(24, 24, 24);
 }
 
 .more-infos a:hover {

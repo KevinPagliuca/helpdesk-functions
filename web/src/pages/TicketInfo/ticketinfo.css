@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    position: relative;
     min-height: 100vh;
     width: 100%;
     /* background: linear-gradient(90deg, rgba(14, 92, 173, 1) 0%, rgba(16, 95, 173, 1) 19%, rgba(24, 105, 172, 1) 36%, rgba(36, 123, 171, 1) 51%, rgba(53, 147, 170, 1) 65%, rgba(76, 178, 168, 1) 79%, rgba(103, 216, 166, 1) 92%, rgba(121, 241, 164, 1) 100%); */
@@ -105,8 +106,8 @@
 
 #ticket-info .actions {
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
