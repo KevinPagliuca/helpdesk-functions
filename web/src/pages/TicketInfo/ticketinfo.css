@@ -14,7 +14,7 @@
     justify-content: center;
     width: 100%;
     max-width: 1100px;
-    background: rgb(0, 0, 0, 0.5);
+    background: rgb(0, 0, 0, 0.7);
     color: #fff;
     font: 500 28px Poppins;
     text-align: center;
@@ -27,6 +27,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    flex-direction: column;
     max-width: 900px;
     width: 100%;
     margin-top: 50px;
@@ -39,7 +40,6 @@
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    min-height: 350px;
     background: rgb(0, 0, 0, 0.7);
     border-radius: 8px;
     border: 2px solid #333;
@@ -51,7 +51,131 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 80px;
+    padding: 10px 0;
     color: #fff;
     border-bottom: 2px solid #333;
+}
+
+#ticket-info .header-ticket .btnEdit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 50%;
+    color: #fff;
+    background: #333;
+    box-shadow: 0 0 8px #333;
+}
+
+#ticket-info .header-ticket .btnEdit:hover {
+    background: rgb(0, 153, 255);
+    box-shadow: 0 0 10px rgb(0, 153, 255);
+    transition: all .3s ease-in-out;
+}
+
+#ticket-info .informations {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    padding: 5px 0;
+    border-bottom: 2px solid #333;
+    width: 100%;
+}
+
+#ticket-info .description {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    color: #fff;
+    padding: 10px 0;
+    width: 100%;
+}
+
+#ticket-info .description strong {
+    font: 600 18px Poppins;
+    margin-bottom: 10px;
+}
+
+#ticket-info .description p {
+    width: 100%;
+    text-align: justify;
+}
+
+#ticket-info .actions {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#ticket-info .actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    border-radius: 8px;
+    color: #fff;
+    background: #333;
+    box-shadow: 0 0 8px #333;
+    font: 600 14px Poppins;
+}
+
+#ticket-info .actions button:hover {
+    background: rgb(0, 153, 255);
+    box-shadow: 0 0 10px rgb(0, 153, 255);
+    transition: all .3s ease-in-out
+}
+
+#ticket-info .reply-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#ticket-info .reply-content {
+    display: flex;    
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
+    background: rgb(0, 0, 0, 0.7);
+    border-radius: 8px;
+    border: 2px solid #333;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+#ticket-info .reply-container:nth-child(odd) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+#ticket-info .reply-content .reply-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 0;
+    border-bottom: 2px solid #333;
+    margin-bottom: 8px;
+}
+
+#ticket-info .reply-content .reply-header p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 400 15px Poppins;
+}
+
+#ticket-info .reply-content .reply-header p svg {
+    margin-right: 8px;
 }
