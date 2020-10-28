@@ -13,6 +13,8 @@ const TicketInfo = () => {
     const [ticket, setTicket] = useState([]);
     const [replys, setReplys] = useState([]);
 
+    const [isClicked, setIsClicked] = useState(false); 
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -25,10 +27,14 @@ const TicketInfo = () => {
             })
     }, [id]);
 
+    function ModalAppear(e) {
+        e.preventDefault();
+        setIsClicked(true);
+    }
 
     return (
         <div id="ticket-info">
-            <ModalReply />
+            <ModalReply visible={isClicked} />
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">
