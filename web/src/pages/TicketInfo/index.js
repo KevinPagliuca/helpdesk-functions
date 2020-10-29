@@ -13,7 +13,7 @@ const TicketInfo = () => {
     const [ticket, setTicket] = useState([]);
     const [replys, setReplys] = useState([]);
 
-    const [isClicked, setIsClicked] = useState(false); 
+    const [isClicked, setIsClicked] = useState(false);
 
     const { id } = useParams();
 
@@ -27,14 +27,19 @@ const TicketInfo = () => {
             })
     }, [id]);
 
-    function ModalAppear(e) {
+    function handleModalAppear(e) {
         e.preventDefault();
         setIsClicked(true);
     }
 
+    function handleSetModalVisibility(e) {
+        e.preventDefault();
+        setIsClicked(false);
+    }
+
     return (
         <div id="ticket-info">
-            <ModalReply visible={isClicked} />
+            <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">
@@ -78,13 +83,13 @@ const TicketInfo = () => {
 
                     <div className="actions">
                         <div className="btn-action">
-                            <button>Responder</button>
+                            <button onClick={handleModalAppear}>Responder</button>
                         </div>
                     </div>
                 </div>
                 {replys.map(reply => (
-                    <div className="reply-container">
-                        <div key={reply.id} className="reply-content">
+                    <div className="reply-container" key={reply.id} >
+                        <div className="reply-content">
                             <div className="reply-header">
                                 <strong>{reply.user_reply}</strong>
                                 <p><FaRegClock /> {reply.created_at}</p>
