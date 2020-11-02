@@ -34,12 +34,20 @@ const TicketInfo = () => {
 
     function handleSetModalVisibility(e) {
         e.preventDefault();
-        setIsClicked(false);
+        if (isClicked === true) {
+            setIsClicked(false);
+            document.getElementById('backdrop').style.display = "none";  
+
+        } else {
+            setIsClicked(true);
+            document.getElementById('backdrop').style.display = "block";
+        }
+
     }
 
     return (
-        <div id="ticket-info">
-            <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
+        <div id="ticket-info">            
+                <ModalReply click={isClicked} visibility={handleSetModalVisibility} />                
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">

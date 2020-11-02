@@ -9,6 +9,10 @@
 #login form {
     display: flex;
     flex-direction: column;
+    padding: 50px;
+    box-shadow: 0 0 20px rgb(24, 24, 24);
+    border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 #login form h3 {
