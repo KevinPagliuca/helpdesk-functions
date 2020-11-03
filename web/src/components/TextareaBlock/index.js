@@ -7,10 +7,12 @@ const TextAreaBlock = (props) => {
     function handleAutoSizeTextarea(e) {
         var height = e.target.scrollHeight;
         e.target.style.height = 'auto';
-        e.target.style.height = `${height}px`;    
-    }
+        e.target.style.height = `${height}px`;
 
-   
+        if (e.target.value === '') {
+            e.target.style.height = '100%';
+        }
+    }
 
     return (
         <div className="textarea-block">

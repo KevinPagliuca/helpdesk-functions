@@ -12,14 +12,16 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    transform: translateY(-100%);    
+    transform: translateY(-100%);
+    opacity: 0.45;
     transition: all .3s ease-in-out;
-    z-index: 1;
 }
 
 .translate {
     transform: translateY(0%);
-    height: 100vh;
+    opacity: 1;
+    height: 100vh;    
+    z-index: 1;
     transition: all .5s ease-in-out;
 }
 
@@ -27,11 +29,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 600px;
-    height: 350px;
-    background: rgb(24, 23, 22);
-    box-shadow: 0 0 20px rgb(24, 23, 22);
+    width: 650px;
+    height: 400px;
+    background: rgb(23, 24, 25);
+    box-shadow: 0 0 20px rgb(23, 24, 25);
     color: #333;
     border: 2px solid #333;
     border-radius: 8px;
+    padding: 20px 65px;    
+    overflow: scroll;
+}
+
+.modal-content form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    color: #ddd;
+}
+
+.modal-content form section {
+    width: 100%;
+}
+
+.modal-content form div button:hover {
+    background-color: rgb(40, 153, 40) !important;
+}
+
+.modal-content::-webkit-scrollbar {
+    display: none;
 }

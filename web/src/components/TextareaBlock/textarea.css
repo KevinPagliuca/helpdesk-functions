@@ -7,7 +7,7 @@
     padding: 5px 0;
     margin: 10px 0;
     font: 600 16px Poppins;    
-    text-shadow: 0 0 2px #fff;
+    text-shadow: 0 0 1px #fff;
     color: #fff;
 }
 
@@ -22,6 +22,7 @@
     background: rgb(26, 26, 34);
     color: #fff;
     font: 400 14px Poppins;
+    text-align: justify;
 }
 
 .textarea-block textarea::placeholder {
@@ -37,3 +38,4 @@
     box-shadow: 0 0 15px rgb(0, 153, 255);
     transition: all 0.3s ease-in-out;
 }
+

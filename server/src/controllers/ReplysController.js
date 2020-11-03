@@ -5,6 +5,7 @@ module.exports = {
         const { text } = req.body;
         const { id } = req.params; // desconstrução do ID do chamado para vincular...
         const user_reply = req.headers.user_name;
+        const user_id_reply = req.headers.user_id_reply;
 
         var date = new Date();
         const DataHoje = date.toLocaleString();
@@ -13,6 +14,7 @@ module.exports = {
             const insertReply = await connection('replys_tickets').insert({
                 text,
                 user_reply,
+                user_id_reply,
                 ticket_id: id,
                 created_at: DataHoje,
                 updated_at: DataHoje

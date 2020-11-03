@@ -18,6 +18,13 @@ exports.up = function (knex) {
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
 
+        table.string('user_id_reply')
+        .notNullable()
+        .references('id')
+        .inTable('users')
+        .onUpdate('CASCADE')
+        .onDelete('CASCADE');
+
         table.timestamp('created_at');
         table.timestamp('updated_at');
     });

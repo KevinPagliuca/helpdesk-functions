@@ -25,29 +25,33 @@ const TicketInfo = () => {
             })).catch((err) => {
                 alert(err);
             })
-    }, [id]);
+    }, [id, ticket]);
 
     function handleModalAppear(e) {
         e.preventDefault();
-        setIsClicked(true);
+        if(isClicked === false) {
+            setIsClicked(true);
+        } else {
+            setIsClicked(false);
+        }
     }
 
     function handleSetModalVisibility(e) {
         e.preventDefault();
         if (isClicked === true) {
             setIsClicked(false);
-            document.getElementById('backdrop').style.display = "none";  
+            document.getElementById('backdrop').style.display = "none";
 
         } else {
             setIsClicked(true);
             document.getElementById('backdrop').style.display = "block";
         }
-
     }
 
+
     return (
-        <div id="ticket-info">            
-                <ModalReply click={isClicked} visibility={handleSetModalVisibility} />                
+        <div id="ticket-info">
+            <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
             <Header />
             <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">
