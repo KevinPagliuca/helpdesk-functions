@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.png';
 import userImg from '../../assets/user.png';
@@ -7,7 +7,15 @@ import userImg from '../../assets/user.png';
 import './header.css';
 
 const Header = () => {
-    
+    const history = useHistory();
+
+    async function handleLogout() {
+        localStorage.clear();
+        sessionStorage.removeItem('status');
+
+        history.push('/');
+    }
+
     return (
         <header id="header">
             <nav className="navbar">
@@ -16,7 +24,7 @@ const Header = () => {
                 </div>
 
                 <div className="nav-container">
-                    <ul>                  
+                    <ul>
                         <li><Link to="/dashboard">Dashboard</Link></li>
                         <li><Link to="/newticket">Novo chamado</Link></li>
                         <li><Link to="/mytickets">Meus chamados</Link></li>
@@ -30,7 +38,7 @@ const Header = () => {
                             <Link to="/myaccount">Minha conta</Link>
                             <Link to="/suggest">Sugestões</Link>
                             <Link to="/faq">Ajuda</Link>
-                            <Link to="/logout">Sair</Link>
+                            <Link to="/" onClick={handleLogout}>Sair</Link>
                         </div>
                     </div>
                 </div>

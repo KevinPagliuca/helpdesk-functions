@@ -1,0 +1,6 @@
+#admin {
+    display: flex;
+    flex-direction: column;
+    background: rgb(23, 24, 25);
+    min-height: 100vh;
+}

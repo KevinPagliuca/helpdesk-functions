@@ -23,6 +23,8 @@ const Login = () => {
             localStorage.setItem('user_role', res.data.role);
             localStorage.setItem('user_dept', res.data.dept);
             localStorage.setItem('user_id', res.data.id);
+            
+            sessionStorage.setItem('status', 1); // logado
             if(res.data.permission !== "1") {
                 history.push('/myaccount');
             } else {
