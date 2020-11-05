@@ -8,10 +8,12 @@ import './header.css';
 
 const Header = () => {
     const history = useHistory();
+    const admin = sessionStorage.getItem('admin');
 
     async function handleLogout() {
         localStorage.clear();
         sessionStorage.removeItem('status');
+        sessionStorage.removeItem('admin');
 
         history.push('/');
     }
@@ -31,10 +33,14 @@ const Header = () => {
                         <li><Link to="/alltickets">Todos os chamados</Link></li>
                     </ul>
 
-
                     <div className="dropdown">
                         <img src={userImg} alt="userImg" />
                         <div id="myDropdown" className="dropdown-content">
+                            {!admin ?
+                                null
+                                :
+                                <Link to="/admin">Administração</Link>
+                            }
                             <Link to="/myaccount">Minha conta</Link>
                             <Link to="/suggest">Sugestões</Link>
                             <Link to="/faq">Ajuda</Link>

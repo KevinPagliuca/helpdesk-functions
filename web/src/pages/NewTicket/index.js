@@ -51,9 +51,9 @@ const NewTicket = () => {
     return (
         <div id="newticket">
             <Header />
-            <h3>Abrir novo chamado</h3>
-
             <div className="container">
+
+                <h3>Preencha o formulário abaixo para abrir seu chamado</h3>
                 <div className="content-newticket">
                     <form className="form-newticket" onSubmit={handleOpenNewTicket}>
                         <InputBlock

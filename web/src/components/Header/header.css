@@ -83,6 +83,7 @@
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
     min-width: 160px;
+    width: 100%;
     overflow: auto;
     box-shadow: 0 0 15px rgb(0, 0, 0);
     right: 0;

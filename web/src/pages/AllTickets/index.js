@@ -24,8 +24,8 @@ const AllTickets = (props) => {
     return (
         <div id="alltickets">
             <Header />
-            <h3>Todos os chamados</h3>
             <div className="container">
+                <h3>Aqui estão todos os chamados em aberto...</h3>
 
                 <div className="tickets">
                     {tickets.length !== 0
@@ -47,7 +47,7 @@ const AllTickets = (props) => {
                             <h4>Não temos nenhum chamado cadastrado no nosso sistema, Seja
                             o primeiro!! <br /><Link to="newticket">Clique Aqui para começar!</Link>
                                 <br />
-                             <p style={{color: 'rgb(0, 153, 255)'}}>#bethefirst</p>
+                                <p style={{ color: 'rgb(0, 153, 255)' }}>#bethefirst</p>
                             </h4>
                         </div>
                     }

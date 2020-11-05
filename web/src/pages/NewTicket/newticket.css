@@ -8,43 +8,36 @@
   background: rgb(23, 24, 25);
 }
 
-#newticket h3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  max-width: 1100px;
-  background: rgb(0, 0, 0, 0.7);
-  color: #fff;
-  font: 500 28px Poppins;
-  text-align: center;
-  border-radius: 8px;
-  margin-top: 20px;
-  padding: 10px;
-}
+
 
 #newticket .container {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  max-width: 1100px;
-  width: 100%;
-  margin-top: 50px;
-  margin-bottom: 30px;
-}
-
-#newticket .container .tickets-svg {
-  display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 100px;
-  height: 100%;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
+  margin-bottom: 30px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;  
+  padding: 20px 10px;
+}
+
+#newticket .container h3 {
+  font: 500 22px Poppins;
+  text-align: center;
+  color: #f0f0f0;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 2px solid #333;  
 }
 
 #newticket .container .form-newticket {
   display: flex;
   flex-direction: column;
-  min-width: 450px;
+  min-width: 550px;
+  padding-top: 20px;
 }
 
 #newticket .container .form-newticket .input-block {

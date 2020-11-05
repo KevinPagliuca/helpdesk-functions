@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { FaLock } from 'react-icons/fa';
 
 import Header from '../../components/Header';
-import { FaLock } from 'react-icons/fa';
 
 import InputBlock from '../../components/InputBlock';
 import accountSvg from '../../assets/account.svg';
 import AvatarImg from '../../components/Styles/Avatar';
 
 import './myaccount.css';
-import { Redirect } from 'react-router-dom';
-
 
 const Myaccount = () => {
     const [name, setName] = useState(localStorage.getItem('user_name'));
@@ -23,9 +22,9 @@ const Myaccount = () => {
         return (
             <div id="myaccount">
                 <Header />
-                <h3>Minha conta</h3>
                 <main className="container">
                     <div className="userdata">
+                        <h3>Minha conta</h3>
                         <form>
                             <AvatarImg />
 
@@ -71,7 +70,7 @@ const Myaccount = () => {
                     </div>
 
                     <div className="account-svg">
-                        <img src={accountSvg} height={530} width={500} alt="accountSvg" />
+                        <img src={accountSvg} alt="accountSvg" />
                     </div>
                 </main>
             </div>

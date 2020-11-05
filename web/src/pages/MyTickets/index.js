@@ -17,7 +17,7 @@ const MyTickets = () => {
     async function LoadTickets() {
       const resp = await api.get('mytickets', {
         headers: {
-          user_id: 1
+          user_id
         }
       });
       setLisTickets(resp.data);
@@ -29,14 +29,9 @@ const MyTickets = () => {
   return (
     <div id="mytickets">
       <Header />
-      <h3>Meus chamados</h3>
-
       <div className="container">
 
-        {/* <div className="tickets-svg">
-          <img src={MyTicketsImg} alt="mytickets-svg" width={350} />
-        </div> */}
-
+      <h3>Meus chamados em aberto...</h3>
         <div className="tickets">
           {listTickets.length !== 0
             ?
@@ -49,8 +44,7 @@ const MyTickets = () => {
                 duedate={ticket.duedate}
                 priority={ticket.priority}
                 category={ticket.category}
-                status={ticket.status}
-              
+                status={ticket.status}              
               />
             ))
             :

@@ -6,16 +6,21 @@
     width: 100%;
     /* background: linear-gradient(90deg, rgba(14, 92, 173, 1) 0%, rgba(16, 95, 173, 1) 19%, rgba(24, 105, 172, 1) 36%, rgba(36, 123, 171, 1) 51%, rgba(53, 147, 170, 1) 65%, rgba(76, 178, 168, 1) 79%, rgba(103, 216, 166, 1) 92%, rgba(121, 241, 164, 1) 100%); */
     background: rgb(23, 24, 25);
+    padding-bottom: 20px;
 }
 
 #myaccount .container {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     max-width: 1100px;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 50px;    
+    background: rgb(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.5);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 #myaccount .container .userdata {
@@ -25,23 +30,14 @@
     flex-direction: column;
     height: 100%;
     color: #fff;
+    padding: 10px 20px;
 }
 
-#myaccount h3 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    max-width: 1100px;
-    background: rgb(0, 0, 0, 0.7);
-    font: 500 28px Poppins;
-    text-align: center;
-    width: 100%;
-    border-radius: 8px;
-    color: #fff;
-    padding: 10px;
+#myaccount .container .userdata h3 {
+    font: 500 26px Poppins;
+    padding: 8px 10px;
+    margin-bottom: 10px;
 }
-
 #myaccount .container .userdata .input-block {
     margin-bottom: 10px;
 }
@@ -50,8 +46,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 100px;
-    height: 100%;
+    margin-left: 74px;
+}
+
+#myaccount .container .account-svg img {
+    height: 100% !important;
+    width: 100% !important;
 }
 
 #myaccount .button-container button {

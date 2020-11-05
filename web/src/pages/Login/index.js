@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import InputBlock from '../../components/InputBlock';
-import api from '../../services/api';
 
+import api from '../../services/api';
 import './login.css';
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
             if(res.data.permission !== "1") {
                 history.push('/myaccount');
             } else {
+                sessionStorage.setItem('admin', true);
                 history.push('/admin');
             }
         }).catch((err) => {

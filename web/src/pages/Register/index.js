@@ -5,7 +5,6 @@ import InputBlock from '../../components/InputBlock';
 import SelectBlock from '../../components/SelectBlock';
 
 import api from '../../services/api';
-
 import './register.css';
 
 const Register = () => {

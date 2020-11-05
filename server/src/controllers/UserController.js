@@ -15,8 +15,8 @@ module.exports = {
     async agents(req, res) {
 
         const consultarAgentes = await connection('users')
-            .select('name')
-            .where('permission', 0);
+            .select('id', 'name', 'email')
+            .where('permission', 1);
 
         if (!consultarAgentes) {
             res.status(500).json({ Erro: "Algo deu errado na sua consulta..." })
@@ -57,6 +57,7 @@ module.exports = {
         } else {
             res.status(400).json({ Error: "E-mail já existe!" })
         }
+
     },
     async login(req, res) {
         const {
