@@ -29,7 +29,7 @@ const TicketInfo = () => {
 
     function handleModalAppear(e) {
         e.preventDefault();
-        if(isClicked === false) {
+        if (isClicked === false) {
             setIsClicked(true);
         } else {
             setIsClicked(false);
@@ -53,7 +53,6 @@ const TicketInfo = () => {
         <div id="ticket-info">
             <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
             <Header />
-            <h3>Infomações do chamado de id: #{id}</h3>
             <div className="container">
                 <div className="content-ticket">
                     <div className="header-ticket">
@@ -99,20 +98,26 @@ const TicketInfo = () => {
                         </div>
                     </div>
                 </div>
-                {replys.map(reply => (
-                    <div className="reply-container" key={reply.id} >
-                        <div className="reply-content">
-                            <div className="reply-header">
-                                <strong>{reply.user_reply}</strong>
-                                <p><FaRegClock /> {reply.created_at}</p>
-                            </div>
+                {
+                    replys.map(reply => {                        
 
-                            <div className="text">
-                                <p>{reply.text}</p>
+                        return (
+                            <div className="reply-container" key={reply.id} >
+                                <div className="reply-content">
+                                    <div className="reply-header">
+                                        <strong>{reply.user_reply}</strong>
+                                        <p><FaRegClock /> {reply.created_at}</p>
+                                    </div>
+
+                                    <div className="text">
+                                        <p>{reply.text}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                ))}
+                        )
+                    }
+                    )
+                }
 
 
             </div>

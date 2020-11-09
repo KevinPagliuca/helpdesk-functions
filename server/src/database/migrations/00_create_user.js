@@ -8,7 +8,7 @@ exports.up = function(knex){
         table.string('dept').notNullable();
         table.string('role').notNullable();
         table.string('password').notNullable();        
-        table.string('permission').defaultTo(1); // 1 para normal, 0 para adm       
+        table.string('permission').defaultTo(0); // 1 para Admin, 0 para Normal      
         table.timestamp('created_at');
         table.timestamp('updated_at');
     });

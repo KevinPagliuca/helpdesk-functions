@@ -8,6 +8,7 @@ const ReplysController = require('./controllers/ReplysController');
 
 routes.post('/login', UserController.login);
 routes.post('/register', UserController.create);
+routes.post('/register/admin', UserController.createAdmin);
 
 routes.get('/agents', UserController.agents);
 

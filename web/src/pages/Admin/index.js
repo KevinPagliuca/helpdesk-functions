@@ -3,52 +3,63 @@ import React from 'react';
 import './admin.css';
 
 import Header from '../../components/Header';
+import { Redirect } from 'react-router-dom';
 
 const Admin = () => {
-    return (
-        <div id="admin">
-            <Header />
 
-            <div className="container">
-                <main className="configuration">
+    const Admin = sessionStorage.getItem('admin');
 
-                    <div className="menu-content">
-                        <p>Cofigurações gerais</p>
+    if (Admin) {
 
-                        <div className="menu">
-                            <button>Criar grupos de administradores</button>
-                            <button>Formulário de chamado</button>
-                            <button>Agentes</button>
-                            <button>Regras</button>                            
-                        </div>
-                    </div>
+        return (
+            <div id="admin">
+                <Header />
 
-                    <div className="menu-content">
-                        <p>Controle de usuários</p>
+                <div className="container">
+                    <main className="configuration">
 
-                        <div className="menu">
-                            <button>Criar nova conta Padrão</button>
-                            <button>Criar nova conta Administradora</button>
-                            <button>Alterar usuários</button>
-                            <button>Excluir usuários</button>
+                        <div className="menu-content">
+                            <p>Cofigurações gerais</p>
+
+                            <div className="menu">
+                                <button>Criar grupos de administradores</button>
+                                <button>Formulário de chamado</button>
+                                <button>Agentes</button>
+                                <button>Regras</button>
+                            </div>
                         </div>
 
-                    </div>
+                        <div className="menu-content">
+                            <p>Controle de usuários</p>
 
-                    <div className="menu-content">
-                        <p>Relatórios</p>
+                            <div className="menu">
+                                <button>Criar nova conta Padrão</button>
+                                <button>Criar nova conta Administradora</button>
+                                <button>Alterar usuários</button>
+                                <button>Excluir usuários</button>
+                            </div>
 
-                        <div className="menu">
-                            <button>Chamados atendidos neste mês</button>
-                            <button>Total de chamados neste mês</button>
-                            <button>Tendências</button>
                         </div>
 
-                    </div>
-                </main>
+                        <div className="menu-content">
+                            <p>Relatórios</p>
+
+                            <div className="menu">
+                                <button>Chamados atendidos neste mês</button>
+                                <button>Total de chamados neste mês</button>
+                                <button>Tendências</button>
+                            </div>
+
+                        </div>
+                    </main>
+                </div>
             </div>
-        </div>
-    )
+        );
+    } else {
+        return (
+            <Redirect to="/myaccount" />
+        );
+    }
 }
 
-export default Admin
+export default Admin;

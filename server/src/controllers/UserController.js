@@ -1,5 +1,9 @@
 const connection = require('../database/connection');
 
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 module.exports = {
     async index(req, res) {
         const { id } = req.params;
@@ -30,35 +34,77 @@ module.exports = {
             email,
             dept,
             role,
-            password,
-            permission
+            password
         } = req.body;
-
-        var date = new Date();
-        const DataHoje = date.toLocaleString();
 
         const consult = await connection('users')
             .select('*')
             .where('email', email)
             .first();
 
+        var date = new Date();
+        const DataHoje = date.toLocaleString();
+
+
         if (!consult) {
-            const insertUser = await connection('users').insert({
-                name,
-                email,
-                dept,
-                role,
-                password,
-                permission,
-                created_at: DataHoje,
-                updated_at: DataHoje
+            await bcrypt.hash(password, saltRounds, async (err, hash) => {
+                const insertUser = await connection('users').insert({
+                    name,
+                    email,
+                    dept,
+                    role,
+                    password: hash,
+                    created_at: DataHoje,
+                    updated_at: DataHoje
+                });
+                res.status(201).json({ id: insertUser[0] });
             });
-            res.status(201).json(insertUser);
+
         } else {
             res.status(400).json({ Error: "E-mail já existe!" })
-        }
 
+        }
     },
+
+    async createAdmin(req, res) {
+        const {
+            name,
+            email,
+            dept,
+            role,
+            password
+        } = req.body;
+
+        const consult = await connection('users')
+            .select('*')
+            .where('email', email)
+            .first();
+
+        var date = new Date();
+        const DataHoje = date.toLocaleString();
+
+
+        if (!consult) {
+            await bcrypt.hash(password, saltRounds, async (err, hash) => {
+                const insertUser = await connection('users').insert({
+                    name,
+                    email,
+                    dept,
+                    role,
+                    password: hash,
+                    permission: 1,
+                    created_at: DataHoje,
+                    updated_at: DataHoje
+                });
+                res.status(201).json({ id: insertUser[0] });
+            });
+
+        } else {
+            res.status(400).json({ Error: "E-mail já existe!" })
+
+        }
+    },
+
     async login(req, res) {
         const {
             email,
@@ -66,15 +112,26 @@ module.exports = {
         } = req.body;
 
         const consult = await connection('users')
-            .select('*')
+            .select('id', 'name', 'email', 'dept', 'role', 'permission', 'created_at', 'updated_at')
             .where('email', email)
-            .where('password', password)
             .first();
 
-        if (!consult) {
-            return res.status(400).json({ error: "Dados incorretos, confira e tente novamente!" });
-        }
+        const findpass = await connection('users')
+            .select('password')
+            .where('email', email)
+            .first();
 
-        return res.json(consult);
+        if (findpass) {
+            const match = await bcrypt.compare(password, findpass.password); // Faz a comparação da senha digitada com a senha cadastrada no BD
+
+            if (match) {
+                return res.json(consult);
+            } else {
+                return res.status(401).json({ Error: 'Sua senha está incorreta, verifique-a e tente novamente!' })
+            }
+        }
+        if (!consult) {
+            return res.status(400).json({ Error: "O E-mail informado não está cadastrado em nosso sistema, tente novamente!" });
+        }
     },
 }

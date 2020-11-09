@@ -17,22 +17,23 @@ const Login = () => {
         await api.post('login', {
             email, password
         }).then((res) => {
-            console.log(res.data);
             localStorage.setItem('user_email', res.data.email);
             localStorage.setItem('user_name', res.data.name);
             localStorage.setItem('user_role', res.data.role);
             localStorage.setItem('user_dept', res.data.dept);
             localStorage.setItem('user_id', res.data.id);
-            
             sessionStorage.setItem('status', 1); // logado
-            if(res.data.permission !== "1") {
+
+            if (res.data.permission !== "1") {
                 history.push('/myaccount');
             } else {
                 sessionStorage.setItem('admin', true);
                 history.push('/admin');
             }
         }).catch((err) => {
-            alert(err);
+            let message = err.response.data.Error;
+            alert(message);
+            console.log(message)
         })
     }
 
@@ -60,7 +61,7 @@ const Login = () => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
-               
+
                 <div className="button-container">
                     <button type="submit">Entrar</button>
                 </div>
