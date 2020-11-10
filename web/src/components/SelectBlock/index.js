@@ -11,7 +11,7 @@ const SelectBlock = ({label, id, placeholder, options, ...rest}) => {
                 <option value="" disabled hidden>{placeholder}</option>
 
                 {options.map(option => (
-                    <option key={option.value} value={option.value}>{option.value}</option>
+                    <option key={option.name} value={option.name}>{option.name}</option>
                 ))}
             </select>
         </div>

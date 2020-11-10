@@ -7,6 +7,7 @@ exports.up = function(knex){
         table.string('category').notNullable();
         table.string('priority').notNullable();
         table.date('duedate').notNullable();
+        table.date('estimated').defaultTo('IT Only');
         table.string('description').notNullable();
         table.string('assignTo').notNullable();     
         table.string('status').defaultTo('Novo');     

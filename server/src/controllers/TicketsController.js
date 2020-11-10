@@ -84,11 +84,40 @@ module.exports = {
         
         const closedTickets = await connection('tickets')
         .select('*')
-        .where('status', '=', 'Concluído');
+        .where('status', 'Concluído');
 
         if(!closedTickets){
             return res.status(400).json({Error: 'Algo não funcionou da maneira correta, tente novamente...'});
         }
         return res.status(200).json(closedTickets);
+    },
+
+
+    async admEdit(req, res) {
+        const { id } = req.params;
+
+        const { estimated } = req.body;
+
+        const ticket = await connection('tickets')
+        .select('*')
+        .where('id', id)
+        .first();
+
+        var date = new Date();
+        const DataHoje = date.toLocaleString();
+
+        if(ticket) {
+            await connection('tickets')
+            .where('id', id)
+            .update({
+                estimated,
+                updated_at: DataHoje
+            });
+
+            res.status(200).json({ Success: 'Alterado com sucesso!'});
+        }
+        else {
+            res.status(404).json({Error: 'Não encontrado!'});
+        }
     }
 }

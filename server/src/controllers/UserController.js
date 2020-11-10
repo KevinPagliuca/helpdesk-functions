@@ -19,7 +19,7 @@ module.exports = {
     async agents(req, res) {
 
         const consultarAgentes = await connection('users')
-            .select('id', 'name', 'email')
+            .select('id', 'name')
             .where('permission', 1);
 
         if (!consultarAgentes) {

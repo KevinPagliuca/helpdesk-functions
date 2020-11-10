@@ -18,7 +18,7 @@ const Admin = () => {
                 <div className="container">
                     <main className="configuration">
 
-                        <div className="menu-content">
+                        {/* <div className="menu-content">
                             <p>Cofigurações gerais</p>
 
                             <div className="menu">
@@ -27,7 +27,7 @@ const Admin = () => {
                                 <button>Agentes</button>
                                 <button>Regras</button>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="menu-content">
                             <p>Controle de usuários</p>

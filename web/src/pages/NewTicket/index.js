@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import Header from '../../components/Header';
@@ -21,6 +21,8 @@ const NewTicket = () => {
     const [duedate, setDueDate] = useState('');
     const [status, setStatus] = useState('');
     const [description, setDescription] = useState('');
+
+    const [agents, setAgents] = useState([]);
 
     const history = useHistory();
 
@@ -47,6 +49,18 @@ const NewTicket = () => {
             alert(err);
         })
     }
+
+    useEffect(() => {
+        async function getAgents() {
+            await api.get('agents')
+                .then((res) => {
+                    setAgents(res.data);
+                }).catch((err) => {
+                    alert(err);
+                })
+        }
+        getAgents();
+    }, [agents]);
 
     return (
         <div id="newticket">
@@ -79,55 +93,39 @@ const NewTicket = () => {
 
                             value={assignTo}
                             onChange={e => setAssignTo(e.target.value)}
-                            options={
-                                [
-                                    {
-                                        value: "Wanderley Santos",
-                                    },
-                                    {
-                                        value: "Kevin Pagliuca"
-                                    },
-                                    {
-                                        value: "André Oliveira"
-                                    },
-                                    {
-                                        value: "Carlos Diogo"
-                                    },
-                                    {
-                                        value: "Carla Garcia"
-                                    }
-                                ]
-                            }
+                            options={agents}
                         />
 
                         <SelectBlock
                             id="category"
                             label="Categoria"
                             placeholder="Selecione uma categoria"
+
                             value={category}
-                            onChange={e => setCategory(e.target.value)}
+                            onChange={e => console.log(setCategory(e.target.value))}
+
                             options={
                                 [
                                     {
-                                        value: "E-mail"
+                                        name: "E-mail"
                                     },
                                     {
-                                        value: "SAP"
+                                        name: "SAP"
                                     },
                                     {
-                                        value: "Websites"
+                                        name: "Websites"
                                     },
                                     {
-                                        value: "Office"
+                                        name: "Office"
                                     },
                                     {
-                                        value: "Computador"
+                                        name: "Computador"
                                     },
                                     {
-                                        value: "Excel"
+                                        name: "Excel"
                                     },
                                     {
-                                        value: "Outros"
+                                        name: "Outros"
                                     }
                                 ]
                             }
@@ -142,19 +140,19 @@ const NewTicket = () => {
                             options={
                                 [
                                     {
-                                        value: "Baixa"
+                                        name: "Baixa"
                                     },
 
                                     {
-                                        value: "Média"
+                                        name: "Média"
                                     },
 
                                     {
-                                        value: "Alta"
+                                        name: "Alta"
                                     },
 
                                     {
-                                        value: "Urgente"
+                                        name: "Urgente"
                                     }
                                 ]
                             }
@@ -169,19 +167,19 @@ const NewTicket = () => {
                             options={
                                 [
                                     {
-                                        value: "Novo"
+                                        name: "Novo"
                                     },
                                     {
-                                        value: "Em aberto"
+                                        name: "Em aberto"
                                     },
                                     {
-                                        value: "Em progresso..."
+                                        name: "Em progresso..."
                                     },
                                     {
-                                        value: "Aguardando matriz/usuário"
+                                        name: "Aguardando matriz/usuário"
                                     },
                                     {
-                                        value: "Concluído"
+                                        name: "Concluído"
                                     }
                                 ]
                             }

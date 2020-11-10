@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
 import TicketItem from '../../components/TicketItem';
-import MyTicketsImg from '../../assets/mytickets.svg';
 
 import api from '../../services/api';
 import './mytickets.css';
