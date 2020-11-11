@@ -185,13 +185,19 @@ const TicketInfo = () => {
                         </div>
                         <div className="TIdueDate">
                             <strong>Prazo</strong>
-                            {admin !== 'true' ?
-                                <p>{ticket.estimated}</p>
+                            {userEdit === true || admin === 'true' ?
+                                <input
+                                    type="date"
+                                    value={tmpItEstimated}
+                                    onChange={e => setTmpItEstimated(e.target.value)}
+                                    
+                                />
                                 :
                                 <input
                                     type="date"
                                     value={tmpItEstimated}
                                     onChange={e => setTmpItEstimated(e.target.value)}
+                                    readOnly
                                 />
                             }
                         </div>
