@@ -40,7 +40,7 @@ const ModalReply = (props) => {
                         <section>
                             <TextareaBlock
                                 label="Deixe seu comentário abaixo"
-                                id="text"
+                                id="reply-text"
                                 placeholder="Insira seu texto aqui"
 
                                 onChange={e => setText(e.target.value)}

@@ -12,10 +12,26 @@ import ModalReply from './ModalReply';
 const TicketInfo = () => {
     const [ticket, setTicket] = useState([]);
     const [replys, setReplys] = useState([]);
+    const [userEdit, setUserEdit] = useState(false);
+    const [agents, setAgents] = useState([]);
+
+    const [tmpSubject, setTmpSubject] = useState('');
+    const [tmpAssignTo, setTmpAssignTo] = useState('');
+    const [tmpCategory, setTmpCategory] = useState('');
+    const [tmpPriority, setTmpPriority] = useState('');
+    const [tmpDuedate, setTmpDueDate] = useState('');
+    const [tmpItEstimated, setTmpItEstimated] = useState('');
+    const [tmpDescription, setTmpDescription] = useState('');
+    const [tmpStatus, setTmpStatus] = useState('');
 
     const [isClicked, setIsClicked] = useState(false);
 
     const { id } = useParams();
+
+    const user_id = localStorage.getItem('user_id');
+
+    const admin = sessionStorage.getItem('admin');
+
 
     useEffect(() => {
         api.get(`ticket/${id}`)
@@ -26,6 +42,42 @@ const TicketInfo = () => {
                 alert(err);
             })
     }, [id, ticket]);
+
+    useEffect(() => {
+        setTmpSubject(localStorage.getItem('tmpSubject'));
+        setTmpAssignTo(localStorage.getItem('tmpAssignTo'));
+        setTmpPriority(localStorage.getItem('tmpPriority'));
+        setTmpCategory(localStorage.getItem('tmpCategory'));
+        setTmpDueDate(localStorage.getItem('tmpDueDate'));
+        setTmpItEstimated(localStorage.getItem('tmpEstimated'));
+        setTmpDescription(localStorage.getItem('tmpDescription'));
+        setTmpStatus(localStorage.getItem('tmpStatus'));
+    }, [userEdit]);
+
+    function handlTicketEdit(e) {
+        e.preventDefault();
+        setUserEdit(true);
+        localStorage.setItem('tmpSubject', ticket.subject);
+        localStorage.setItem('tmpAssignTo', ticket.assignTo);
+        localStorage.setItem('tmpPriority', ticket.priority);
+        localStorage.setItem('tmpCategory', ticket.category);
+        localStorage.setItem('tmpDueDate', ticket.duedate);
+        localStorage.setItem('tmpEstimated', ticket.estimated);
+        localStorage.setItem('tmpDescription', ticket.description);
+        localStorage.setItem('tmpStatus', ticket.status);
+    }
+
+    useEffect(() => {
+        async function getAgents() {
+            await api.get('agents')
+                .then((res) => {
+                    setAgents(res.data);
+                }).catch((err) => {
+                    alert(err);
+                })
+        }
+        getAgents();
+    }, [agents]);
 
     function handleModalAppear(e) {
         e.preventDefault();
@@ -48,7 +100,6 @@ const TicketInfo = () => {
         }
     }
 
-
     return (
         <div id="ticket-info">
             <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
@@ -56,40 +107,126 @@ const TicketInfo = () => {
             <div className="container">
                 <div className="content-ticket">
                     <div className="header-ticket">
-                        <strong>{ticket.subject}</strong>
+                        {userEdit === false ?
+                            <strong>{ticket.subject}</strong>
+                            :
+                            <input type="text" value={tmpSubject} onChange={e => setTmpSubject(e.target.value)} />
 
+                        }
                         <div className="icons">
-                            <button className="btnEdit"><FaPen size={20} /></button>
+                            {Number(user_id) === ticket.user_id || admin === 'true' ?
+                                <button className="btnEdit" onClick={handlTicketEdit}><FaPen size={20} /></button>
+                                :
+                                null
+                            }
                         </div>
+
                     </div>
 
                     <div className="informations">
                         <div className="assignTo">
                             <strong>Agente</strong>
-                            <p>{ticket.assignTo}</p>
+                            {userEdit === false ?
+                                <p>{ticket.assignTo}</p>
+                                :
+                                <select
+                                    value={tmpAssignTo}
+                                    onChange={e => setTmpAssignTo(e.target.value)}
+                                >
+                                    {agents.map(agent => (
+                                        <option key={agent.id} value={agent.name}>{agent.name}</option>
+                                    ))}
+                                </select>
+                            }
                         </div>
                         <div className="category">
                             <strong>Categoria</strong>
-                            <p>{ticket.category}</p>
+                            {userEdit === false ?
+                                <p>{ticket.category}</p>
+                                :
+
+                                <select
+                                    value={tmpCategory}
+                                    onChange={e => setTmpCategory(e.target.value)}
+                                >
+                                    <option>E-mail</option>
+                                    <option>SAP</option>
+                                </select>
+                            }
                         </div>
                         <div className="priority">
                             <strong>Prioridade</strong>
-                            <p>{ticket.priority}</p>
+                            {userEdit === false ?
+                                <p>{ticket.priority}</p>
+                                :
+                                <select
+                                    value={tmpPriority}
+                                    onChange={e => setTmpPriority(e.target.value)}
+                                >
+                                    <option>Baixa</option>
+                                    <option>Média</option>
+                                    <option>Alta</option>
+                                    <option>Urgente</option>
+                                </select>
+                            }
+
                         </div>
                         <div className="dueDate">
                             <strong>Vencimento</strong>
-                            <p>{ticket.duedate}</p>
+                            {userEdit === false ?
+                                <p>{ticket.duedate}</p>
+                                :
+                                <input
+                                    type="date"
+                                    value={tmpDuedate}
+                                    onChange={e => setTmpDueDate(e.target.value)}
+                                />
+                            }
+                        </div>
+                        <div className="TIdueDate">
+                            <strong>Prazo</strong>
+                            {admin !== 'true' ?
+                                <p>{ticket.estimated}</p>
+                                :
+                                <input
+                                    type="date"
+                                    value={tmpItEstimated}
+                                    onChange={e => setTmpItEstimated(e.target.value)}
+                                />
+                            }
                         </div>
                         <div className="status">
                             <strong>Status</strong>
-                            <p>{ticket.status}</p>
+                            {userEdit === false ?
+                                <p>{ticket.status}</p>
+                                :
+                                <select
+                                    value={tmpStatus}
+                                    onChange={e => setTmpStatus(e.target.value)}
+                                >
+                                    <option value="Novo">Novo</option>
+                                    <option value="Em aberto">Em aberto</option>
+                                    <option value="Em andamento...">Em andamento...</option>
+                                    <option value="Aguardando Matriz/Usuário">Aguardando Matriz/Usuário</option>
+                                    <option value="Concluído">Concluído</option>
+                                </select>
+                            }
+
                         </div>
                     </div>
 
                     <div className="description">
                         <strong>Descrição</strong>
+                        {userEdit === false ?
+                            <p>{ticket.description}</p>
+                            :
+                            <textarea
+                                value={tmpDescription}
+                                onChange={e => setTmpDescription(e.target.value)}
+                            >
+                            </textarea>
+                        }
 
-                        <p>{ticket.description}</p>
                     </div>
 
                     <div className="actions">
@@ -98,28 +235,21 @@ const TicketInfo = () => {
                         </div>
                     </div>
                 </div>
-                {
-                    replys.map(reply => {                        
-
-                        return (
-                            <div className="reply-container" key={reply.id} >
-                                <div className="reply-content">
-                                    <div className="reply-header">
-                                        <strong>{reply.user_reply}</strong>
-                                        <p><FaRegClock /> {reply.created_at}</p>
-                                    </div>
-
-                                    <div className="text">
-                                        <p>{reply.text}</p>
-                                    </div>
-                                </div>
+                {replys.map(reply => (
+                    <div className="reply-container" key={reply.id} >
+                        <div className="reply-content">
+                            <div className="reply-header">
+                                <strong>{reply.user_reply}</strong>
+                                <p><FaRegClock /> {reply.created_at}</p>
                             </div>
-                        )
-                    }
-                    )
-                }
 
-
+                            <div className="text">
+                                <p>{reply.text}</p>
+                            </div>
+                        </div>
+                    </div>
+                )
+                )}
             </div>
         </div>
     );

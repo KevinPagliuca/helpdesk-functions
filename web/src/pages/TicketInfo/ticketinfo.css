@@ -8,30 +8,19 @@
     background: rgb(37, 38, 39);
 }
 
-#ticket-info h3 {
+#ticket-info .container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    flex-direction: column;
     max-width: 1100px;
     background: rgb(23, 24, 25);
-    color: #fff;
-    font: 500 28px Poppins;
-    text-align: center;
-    border-radius: 8px;
-    margin-top: 20px;
-    padding: 10px;
-}
-
-#ticket-info .container {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    max-width: 900px;
+    box-shadow: 0 0 20px rgb(23, 24, 25);
+    border: 0;
+    border-radius: 12px;
+    padding: 50px 30px;
     width: 100%;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin: 30px;
 }
 
 #ticket-info .content-ticket {
@@ -40,9 +29,13 @@
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    background: rgb(23, 24, 25);
+    max-width: 1000px;
+    background: #f0f0f0;
+    box-shadow: 0 0 20px rgb(0, 0, 0);
+    text-shadow: 0 0 2px rgb(37, 38, 39);
     border-radius: 8px;
-    border: 2px solid #333;
+    border: 0;
+    outline: 0;
     padding: 10px 20px;
 }
 
@@ -52,8 +45,8 @@
     justify-content: space-between;
     width: 100%;
     padding: 10px 0;
-    color: #fff;
     border-bottom: 2px solid #333;
+    font: 600 22px Poppins;
 }
 
 #ticket-info .header-ticket .btnEdit {
@@ -62,9 +55,9 @@
     justify-content: space-between;
     padding: 10px;
     border-radius: 50%;
-    color: #fff;
-    background: #333;
-    box-shadow: 0 0 8px #333;
+    color: #f0f0f0;
+    background: rgb(37, 38, 39);
+    box-shadow: 0 0 8px rgb(37, 38, 39);
 }
 
 #ticket-info .header-ticket .btnEdit:hover {
@@ -77,10 +70,17 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #fff;
     padding: 5px 0;
     border-bottom: 2px solid #333;
     width: 100%;
+    height: 100%;
+}
+
+#ticket-info .informations>div { 
+    display: flex;
+    align-items: center;
+    flex-direction: column;   
+    margin-right: 10px;
 }
 
 #ticket-info .description {
@@ -88,7 +88,6 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    color: #fff;
     padding: 10px 0;
     width: 100%;
 }
@@ -100,7 +99,34 @@
 
 #ticket-info .description p {
     width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    box-shadow: 0 0 7px #bbb;
+    border-radius: 12px;
     text-align: justify;
+}
+
+#ticket-info .description textarea {
+    width: 100%;
+    padding: 20px;
+    line-height: 24px;
+    box-shadow: 0 0 7px #bbb;
+    border: 0;
+    border-radius: 12px;
+    resize: vertical;
+    font: 400 14px Poppins;
+    text-shadow: 0 0 2px rgb(37, 38, 39);
+}
+
+#ticket-info input, #ticket-info select {
+    width: 100%;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 7px #bbb;
+    padding: 8px 12px;
+    font: 400 14px Poppins;
+    text-shadow: 0 0 2px rgb(37, 38, 39);  
+    margin-right: 10px;  
 }
 
 #ticket-info .actions {
@@ -108,6 +134,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 #ticket-info .actions button {
@@ -117,8 +144,8 @@
     padding: 12px;
     border-radius: 8px;
     color: #fff;
-    background: #333;
-    box-shadow: 0 0 8px #333;
+    background: rgb(37, 38, 39);
+    box-shadow: 0 0 8px rgb(37, 38, 39);
     font: 600 14px Poppins;
 }
 
@@ -134,21 +161,24 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    max-width: 1000px;
 }
 
 #ticket-info .reply-content {
-    display: flex;    
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
     margin-top: 20px;
-    max-width: 600px;
+    max-width: 750px;
     width: 100%;
-    background:rgb(23, 24, 25);
+    background: #f0f0f0;
+    box-shadow: 0 0 20px rgb(37, 38, 39);
     border-radius: 8px;
-    border: 2px solid #333;
+    border: 0;
+    outline: 0;
     padding: 10px 20px;
-    color: #fff;
+    text-shadow: 0 0 2px rgb(37, 38, 39);
 }
 
 #ticket-info .reply-container:nth-child(odd) {

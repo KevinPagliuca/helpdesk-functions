@@ -16,7 +16,7 @@ const TextAreaBlock = (props) => {
 
     return (
         <div className="textarea-block">
-            <label>{props.label}</label>
+            <label htmlFor={props.id}>{props.label}</label>
             <textarea
                 id={props.id}
                 onKeyDown={handleAutoSizeTextarea}

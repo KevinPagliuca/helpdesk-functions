@@ -14,7 +14,7 @@
     position: fixed;
     transform: translateY(-100%);
     opacity: 0.45;
-    transition: all .3s ease-in-out;
+    transition: all .3s 0ms ease-in-out;
 }
 
 .translate {
@@ -22,7 +22,7 @@
     opacity: 1;
     height: 100vh;    
     z-index: 1;
-    transition: all .5s ease-in-out;
+    transition: all .5s 0ms ease-in-out;
 }
 
 .modal-container .modal-content {
@@ -32,9 +32,8 @@
     width: 650px;
     height: 400px;
     background: rgb(23, 24, 25);
-    box-shadow: 0 0 20px rgb(23, 24, 25);
+    box-shadow: 0 0 50px rgb(23, 24, 25);
     color: #333;
-    border: 2px solid #333;
     border-radius: 8px;
     padding: 20px 65px;    
     overflow: scroll;
