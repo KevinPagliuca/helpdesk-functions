@@ -76,10 +76,10 @@
     height: 100%;
 }
 
-#ticket-info .informations>div { 
+#ticket-info .informations>div {
     display: flex;
     align-items: center;
-    flex-direction: column;   
+    flex-direction: column;
     margin-right: 10px;
 }
 
@@ -125,8 +125,8 @@
     box-shadow: 0 0 7px #bbb;
     padding: 8px 12px;
     font: 400 14px Poppins;
-    text-shadow: 0 0 2px rgb(37, 38, 39);  
-    margin-right: 10px;  
+    text-shadow: 0 0 2px rgb(37, 38, 39);
+    margin-right: 10px;
 }
 
 #ticket-info .actions {
@@ -134,14 +134,16 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 10px;
+    margin: 15px 0;
 }
 
 #ticket-info .actions button {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     padding: 12px;
+    width: 300px;
     border-radius: 8px;
     color: #fff;
     background: rgb(37, 38, 39);
@@ -149,10 +151,47 @@
     font: 600 14px Poppins;
 }
 
+#ticket-info .actions button>svg {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 12px;
+    color: rgb(0, 153, 255);
+    text-shadow: 0 0 4px rgb(0, 0, 0);
+}
+
+#ticket-info .actions .btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#ticket-info .actions .between {
+    justify-content: space-around !important;
+}
+
+#ticket-info .actions .between button.animated {
+    animation: shine 1.5s ease-in-out infinite;
+}
+
+#ticket-info .actions .between button.animated:hover {
+    background: rgb(0, 153, 255);
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    color: #f0f0f0;
+    animation: none;
+}
+
 #ticket-info .actions button:hover {
     background: rgb(0, 153, 255);
     box-shadow: 0 0 10px rgb(0, 153, 255);
-    transition: all .3s ease-in-out
+    transition: all .3s ease-in-out;
+}
+
+#ticket-info .actions button:hover svg {
+    color: #f0f0f0;
+    transition: color .3s ease-in-out;
 }
 
 #ticket-info .reply-container {
@@ -203,9 +242,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font: 400 15px Poppins;
+    font: 400 13px Poppins;
+    color: #777777;
+    text-shadow: 0 0 0;
 }
 
 #ticket-info .reply-content .reply-header p svg {
     margin-right: 8px;
+    color: #777777;
+    font-size: 18px;
+}
+
+@keyframes shine {
+    from {
+        box-shadow: 0 0 30px 4px rgb(37, 38, 39);
+        transform: scale(1.05);
+    }
+    to {
+        box-shadow: 0 0 0 0 rgb(0, 0, 0, 0);
+        transform: scale(1);
+    }
 }

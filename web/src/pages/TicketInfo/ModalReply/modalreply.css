@@ -1,7 +1,7 @@
 #backdrop {
     display: none;
     position: absolute;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(0, 0, 0, 0.6);
     width: 100%;
     height: 100%;
     z-index: 1;
@@ -20,7 +20,7 @@
 .translate {
     transform: translateY(0%);
     opacity: 1;
-    height: 100vh;    
+    height: 100vh;
     z-index: 1;
     transition: all .5s 0ms ease-in-out;
 }
@@ -31,11 +31,13 @@
     justify-content: center;
     width: 650px;
     height: 400px;
-    background: rgb(23, 24, 25);
-    box-shadow: 0 0 50px rgb(23, 24, 25);
-    color: #333;
+    background: #e0e0e0;
+    box-shadow: 0 0 30px rgb(0, 0, 0);
+    border: 0;
+    outline: 0;
+    color: rgb(23, 24, 25);
     border-radius: 8px;
-    padding: 20px 65px;    
+    padding: 20px 65px;
     overflow: scroll;
 }
 
@@ -45,7 +47,20 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    color: #ddd;
+    color: rgb(23, 24, 25);
+}
+
+.modal-content form label {
+    color: rgb(23, 24, 25);
+    text-shadow: 0 0 1px rgb(23, 24, 25);
+    font: 500 18px Poppins;
+}
+
+.modal-content form textarea {
+    background: #e0e0e0;
+    color: rgb(23, 24, 25);
+    border: 0;
+    box-shadow: 0 0 7px rgb(23, 24, 25);
 }
 
 .modal-content form section {
@@ -53,7 +68,7 @@
 }
 
 .modal-content form div button:hover {
-    background-color: rgb(40, 153, 40) !important;
+    background-color: rgb(23, 24, 25) !important;
 }
 
 .modal-content::-webkit-scrollbar {

@@ -26,6 +26,7 @@
 }
 
 .textarea-block textarea::placeholder {
+    font: 500 16px Poppins;
     text-shadow: none;
 }
 

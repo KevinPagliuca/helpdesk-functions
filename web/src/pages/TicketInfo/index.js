@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaRegClock, FaPen } from 'react-icons/fa';
+import { FaRegClock, FaPen, FaRegCommentDots, FaRegSave, FaSave } from 'react-icons/fa';
 
 import Header from '../../components/Header';
 
@@ -49,7 +49,6 @@ const TicketInfo = () => {
         setTmpPriority(localStorage.getItem('tmpPriority'));
         setTmpCategory(localStorage.getItem('tmpCategory'));
         setTmpDueDate(localStorage.getItem('tmpDueDate'));
-        setTmpItEstimated(localStorage.getItem('tmpEstimated'));
         setTmpDescription(localStorage.getItem('tmpDescription'));
         setTmpStatus(localStorage.getItem('tmpStatus'));
     }, [userEdit]);
@@ -185,20 +184,16 @@ const TicketInfo = () => {
                         </div>
                         <div className="TIdueDate">
                             <strong>Prazo</strong>
-                            {userEdit === true || admin === 'true' ?
+                            {userEdit === true && admin === 'true' ?
                                 <input
                                     type="date"
                                     value={tmpItEstimated}
                                     onChange={e => setTmpItEstimated(e.target.value)}
-                                    
                                 />
                                 :
-                                <input
-                                    type="date"
-                                    value={tmpItEstimated}
-                                    onChange={e => setTmpItEstimated(e.target.value)}
-                                    readOnly
-                                />
+                                <p>
+                                    IT Only
+                                </p>
                             }
                         </div>
                         <div className="status">
@@ -236,9 +231,16 @@ const TicketInfo = () => {
                     </div>
 
                     <div className="actions">
-                        <div className="btn-action">
-                            <button onClick={handleModalAppear}>Responder</button>
-                        </div>
+                        {userEdit === true ?
+                            <div className="btn-action between">
+                                <button onClick={handleModalAppear}><FaRegCommentDots size={33} />Comentar</button>
+                                <button className="animated"><FaSave size={33} />Salvar</button>
+                            </div>
+                            :
+                            <div className="btn-action">
+                                <button onClick={handleModalAppear}><FaRegCommentDots size={33} />Comentar</button>
+                            </div>
+                        }
                     </div>
                 </div>
                 {replys.map(reply => (
