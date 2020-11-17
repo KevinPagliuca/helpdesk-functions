@@ -31,7 +31,7 @@ module.exports = {
             user_name,
             created_at: DataHoje,
             updated_at: DataHoje
-        });        
+        });
 
         return res.status(200).json({ id });
     },
@@ -40,10 +40,10 @@ module.exports = {
     async index(req, res) {
 
         const ListarChamados = await connection('tickets')
-        .select('*')
-        .where('status', '!=', 'Concluído');
+            .select('*')
+            .where('status', '!=', 'Concluído');
 
-       return res.status(200).json(ListarChamados);
+        return res.status(200).json(ListarChamados);
     },
     //listar ticket específico pelo ID.
     async show(req, res) {
@@ -59,9 +59,9 @@ module.exports = {
             .where('ticket_id', id);
 
         if (!ticket) {
-           return res.status(400).json({ Erro: "Algo deu errado..." });
+            return res.status(400).json({ Erro: "Algo deu errado..." });
         } else {
-           return res.status(200).json([ticket, reply_ticket]);
+            return res.status(200).json([ticket, reply_ticket]);
         }
 
     },
@@ -70,24 +70,24 @@ module.exports = {
         const user_id = req.headers.user_id;
 
         if (!user_id) {
-           return res.status(400).json({ Error: 'Algo deu errado ao listar seus chamados, tente novamente...' })
+            return res.status(400).json({ Error: 'Algo deu errado ao listar seus chamados, tente novamente...' })
         } else {
             const tickets = await connection('tickets')
                 .select('*')
                 .where('user_id', user_id)
                 .where('status', '!=', 'Concluído');
-           return res.status(200).json(tickets);
+            return res.status(200).json(tickets);
         }
     },
 
     async closedTickets(req, res) {
-        
-        const closedTickets = await connection('tickets')
-        .select('*')
-        .where('status', 'Concluído');
 
-        if(!closedTickets){
-            return res.status(400).json({Error: 'Algo não funcionou da maneira correta, tente novamente...'});
+        const closedTickets = await connection('tickets')
+            .select('*')
+            .where('status', 'Concluído');
+
+        if (!closedTickets) {
+            return res.status(400).json({ Error: 'Algo não funcionou da maneira correta, tente novamente...' });
         }
         return res.status(200).json(closedTickets);
     },
@@ -99,25 +99,65 @@ module.exports = {
         const { estimated } = req.body;
 
         const ticket = await connection('tickets')
-        .select('*')
-        .where('id', id)
-        .first();
+            .select('*')
+            .where('id', id)
+            .first();
 
         var date = new Date();
         const DataHoje = date.toLocaleString();
 
-        if(ticket) {
+        if (ticket) {
             await connection('tickets')
-            .where('id', id)
-            .update({
-                estimated,
-                updated_at: DataHoje
-            });
+                .where('id', id)
+                .update({
+                    estimated,
+                    updated_at: DataHoje
+                });
 
-            res.status(200).json({ Success: 'Alterado com sucesso!'});
+            res.status(200).json({ Success: 'Alterado com sucesso!' });
         }
         else {
-            res.status(404).json({Error: 'Não encontrado!'});
+            res.status(405).json({ Error: 'Não encontrado!' });
+        }
+    },
+
+    async ticketEdit(req, res) {
+        const { id } = req.params;
+        const user_id = req.headers.user_id;
+        const admin = req.headers.admin;
+
+        const { subject, category, priority, duedate, description, assignTo, status } = req.body;
+
+        const ticket = await connection('tickets')
+            .select('*')
+            .where('id', id)
+            .first();
+
+        if (ticket) {
+            var date = new Date();
+            const DataHoje = date.toLocaleString();
+
+            if (ticket.user_id == user_id || admin ==  true) {
+
+                await connection('tickets')
+                    .where('id', id)
+                    .update({
+                        subject,
+                        category,
+                        priority,
+                        duedate,
+                        description,
+                        assignTo,
+                        status,
+                        updated_at: DataHoje
+                    });
+
+                res.status(200).json({ Success: 'Alterado com sucesso!' });
+            } else {
+                res.status(400).json({ Error: 'Não permitido!' });
+            }
+        } else {
+            res.status(408).json({ Error: 'Ticket não encontrado, tente novamente!' })
         }
     }
 }

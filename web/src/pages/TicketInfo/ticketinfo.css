@@ -13,7 +13,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    max-width: 1100px;
+    max-width: 1200px;
     background: rgb(23, 24, 25);
     box-shadow: 0 0 20px rgb(23, 24, 25);
     border: 0;
@@ -29,7 +29,7 @@
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
-    max-width: 1000px;
+    max-width: 1100px;
     background: #f0f0f0;
     box-shadow: 0 0 20px rgb(0, 0, 0);
     text-shadow: 0 0 2px rgb(37, 38, 39);
@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 0;
+    padding: 5px 0 15px;
     border-bottom: 2px solid #333;
     width: 100%;
     height: 100%;
@@ -78,9 +78,10 @@
 
 #ticket-info .informations>div {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     margin-right: 10px;
+    width: 100%;
 }
 
 #ticket-info .description {
@@ -88,8 +89,13 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 10px 0;
+    padding: 10px 5px;
+    margin: 15px 0;
     width: 100%;
+    box-shadow: 0 0 7px #bbb;
+    background: #f0f0f0;
+    border: 0;
+    border-radius: 12px;
 }
 
 #ticket-info .description strong {
@@ -99,10 +105,8 @@
 
 #ticket-info .description p {
     width: 100%;
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 0 7px #bbb;
-    border-radius: 12px;
+    padding: 0 30px;
+    margin: 10px 0;   
     text-align: justify;
 }
 
@@ -110,19 +114,21 @@
     width: 100%;
     padding: 20px;
     line-height: 24px;
-    box-shadow: 0 0 7px #bbb;
-    border: 0;
-    border-radius: 12px;
+    border: 0;      
+    border-radius: 8px;
+    background: #f0f0f0;
+    box-shadow: 0 0 7px rgb(0, 153, 255);    
     resize: vertical;
     font: 400 14px Poppins;
     text-shadow: 0 0 2px rgb(37, 38, 39);
 }
 
-#ticket-info input, #ticket-info select {
+#ticket-info input,
+#ticket-info select {
     width: 100%;
     border: 0;
     border-radius: 8px;
-    box-shadow: 0 0 7px #bbb;
+    box-shadow: 0 0 7px rgb(0, 153, 255);
     padding: 8px 12px;
     font: 400 14px Poppins;
     text-shadow: 0 0 2px rgb(37, 38, 39);

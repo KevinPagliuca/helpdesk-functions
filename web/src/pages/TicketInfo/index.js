@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaRegClock, FaPen, FaRegCommentDots, FaRegSave, FaSave } from 'react-icons/fa';
+import { FaRegClock, FaPen, FaRegCommentDots, FaSave } from 'react-icons/fa';
 
 import Header from '../../components/Header';
 
@@ -31,6 +31,48 @@ const TicketInfo = () => {
     const user_id = localStorage.getItem('user_id');
 
     const admin = sessionStorage.getItem('admin');
+
+
+
+    async function handleSaveChanges(e) {
+        e.preventDefault();
+
+        if (admin == true) {
+            await api.put(`/ticketAdmin/${id}`, {                
+                subject: tmpSubject,
+                assignTo: tmpAssignTo,
+                category: tmpCategory,
+                priority: tmpPriority,
+                duedate: tmpDuedate,
+                description: tmpDescription,
+                status: tmpStatus,
+                estimated: tmpItEstimated
+            }).then((res) => {
+                alert('Alterado com sucesso!')
+            }).catch((err) => {
+                alert('algo deu errado, verifique e tente novamente!' + err)
+            });
+
+        } else {
+            await api.put(`/ticketEdit/${id}`, {
+                headers: {
+                    user_id,
+                    admin
+                },
+                subject: tmpSubject,
+                assignTo: tmpAssignTo,
+                category: tmpCategory,
+                priority: tmpPriority,
+                duedate: tmpDuedate,
+                description: tmpDescription,
+                status: tmpStatus
+            }).then((res) => {
+                alert('Alterado com sucesso!')
+            }).catch((err) => {
+                alert('algo deu errado, verifique e tente novamente!' + err)
+            });
+        }
+    }
 
 
     useEffect(() => {
@@ -234,7 +276,7 @@ const TicketInfo = () => {
                         {userEdit === true ?
                             <div className="btn-action between">
                                 <button onClick={handleModalAppear}><FaRegCommentDots size={33} />Comentar</button>
-                                <button className="animated"><FaSave size={33} />Salvar</button>
+                                <button onClick={handleSaveChanges} className="animated"><FaSave size={33} />Salvar</button>
                             </div>
                             :
                             <div className="btn-action">
