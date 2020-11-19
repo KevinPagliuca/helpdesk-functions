@@ -32,7 +32,7 @@
     max-width: 1100px;
     background: #f0f0f0;
     box-shadow: 0 0 20px rgb(0, 0, 0);
-    text-shadow: 0 0 2px rgb(37, 38, 39);
+    text-shadow: 0 0 1.5px rgb(37, 38, 39);
     border-radius: 8px;
     border: 0;
     outline: 0;
@@ -106,25 +106,30 @@
 #ticket-info .description p {
     width: 100%;
     padding: 0 30px;
-    margin: 10px 0;   
+    margin: 10px 0;
     text-align: justify;
+    line-height: 35px !important;
+    font: 400 16px Poppins;    
 }
 
 #ticket-info .description textarea {
     width: 100%;
     padding: 20px;
     line-height: 24px;
-    border: 0;      
+    min-height: 350px;
+    border: 0;
     border-radius: 8px;
     background: #f0f0f0;
-    box-shadow: 0 0 7px rgb(0, 153, 255);    
+    box-shadow: 0 0 7px rgb(0, 153, 255);
     resize: vertical;
-    font: 400 14px Poppins;
+    font: 400 14px Poppins;    
+    text-align: justify;
+    line-height: 35px;
     text-shadow: 0 0 2px rgb(37, 38, 39);
+    overflow: scroll;
 }
 
-#ticket-info input,
-#ticket-info select {
+#ticket-info input, #ticket-info select {
     width: 100%;
     border: 0;
     border-radius: 8px;

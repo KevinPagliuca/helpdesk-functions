@@ -92,52 +92,23 @@ module.exports = {
         return res.status(200).json(closedTickets);
     },
 
-
-    async admEdit(req, res) {
-        const { id } = req.params;
-
-        const { estimated } = req.body;
-
-        const ticket = await connection('tickets')
-            .select('*')
-            .where('id', id)
-            .first();
-
-        var date = new Date();
-        const DataHoje = date.toLocaleString();
-
-        if (ticket) {
-            await connection('tickets')
-                .where('id', id)
-                .update({
-                    estimated,
-                    updated_at: DataHoje
-                });
-
-            res.status(200).json({ Success: 'Alterado com sucesso!' });
-        }
-        else {
-            res.status(405).json({ Error: 'Não encontrado!' });
-        }
-    },
-
     async ticketEdit(req, res) {
         const { id } = req.params;
         const user_id = req.headers.user_id;
         const admin = req.headers.admin;
 
-        const { subject, category, priority, duedate, description, assignTo, status } = req.body;
+        const { subject, category, priority, duedate, description, assignTo, status, estimated } = req.body;
 
         const ticket = await connection('tickets')
             .select('*')
             .where('id', id)
             .first();
-
+            
         if (ticket) {
             var date = new Date();
             const DataHoje = date.toLocaleString();
 
-            if (ticket.user_id == user_id || admin ==  true) {
+            if (ticket.user_id == user_id || admin === "true") {
 
                 await connection('tickets')
                     .where('id', id)
@@ -147,6 +118,7 @@ module.exports = {
                         priority,
                         duedate,
                         description,
+                        estimated,
                         assignTo,
                         status,
                         updated_at: DataHoje
@@ -154,10 +126,10 @@ module.exports = {
 
                 res.status(200).json({ Success: 'Alterado com sucesso!' });
             } else {
-                res.status(400).json({ Error: 'Não permitido!' });
+                res.status(401).json({ Error: 'Não permitido!' });
             }
         } else {
-            res.status(408).json({ Error: 'Ticket não encontrado, tente novamente!' })
+            res.status(404).json({ Error: 'Ticket não encontrado, tente novamente!' })
         }
     }
 }

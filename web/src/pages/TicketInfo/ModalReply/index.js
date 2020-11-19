@@ -28,6 +28,9 @@ const ModalReply = (props) => {
          }).catch((err) => {
              alert('erro ' + err);
          });     
+         setText('');     
+         props.enviar(true);
+         
     }    
 
     return (

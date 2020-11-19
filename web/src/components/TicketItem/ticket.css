@@ -38,7 +38,7 @@
 
 .content:hover .subject strong {
   color: #fff;
-  text-shadow: 0 0 3px rgb(34, 30, 30);
+  text-shadow: 0 0 1.7px rgb(34, 30, 30);
 }
 
 .content .subject .options svg {
@@ -51,9 +51,9 @@
 }
 
 .content .subject strong {
-  font: 600 17px Poppins;
+  font: 500 20px Poppins;
   color: #191919;
-  text-shadow: 0 0 3px rgb(24, 24, 24);
+  text-shadow: 0 0 2px rgb(24, 24, 24);
 }
 
 .content .info {
@@ -67,9 +67,11 @@
 .content .info div>strong {
   font: 500 16px Poppins;
   color: #191919;
+  text-shadow: 0 0 1.5px rgb(24, 24, 24);
 }
 
 .content .info div>p {
   font: 400 14px Poppins;
   color: #191919;
+  text-shadow: 0 0 1.1px rgb(24, 24, 24);
 }

@@ -20,7 +20,6 @@ routes.get('/closedtickets', TicketsController.closedTickets);
 
 routes.post('/ticket/:id', ReplysController.create);
 
-routes.put('/ticketAdmin/:id', TicketsController.admEdit);
 routes.put('/ticketEdit/:id', TicketsController.ticketEdit);
 
 module.exports = routes;

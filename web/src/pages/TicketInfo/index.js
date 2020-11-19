@@ -25,55 +25,10 @@ const TicketInfo = () => {
     const [tmpStatus, setTmpStatus] = useState('');
 
     const [isClicked, setIsClicked] = useState(false);
-
     const { id } = useParams();
 
     const user_id = localStorage.getItem('user_id');
-
     const admin = sessionStorage.getItem('admin');
-
-
-
-    async function handleSaveChanges(e) {
-        e.preventDefault();
-
-        if (admin == true) {
-            await api.put(`/ticketAdmin/${id}`, {                
-                subject: tmpSubject,
-                assignTo: tmpAssignTo,
-                category: tmpCategory,
-                priority: tmpPriority,
-                duedate: tmpDuedate,
-                description: tmpDescription,
-                status: tmpStatus,
-                estimated: tmpItEstimated
-            }).then((res) => {
-                alert('Alterado com sucesso!')
-            }).catch((err) => {
-                alert('algo deu errado, verifique e tente novamente!' + err)
-            });
-
-        } else {
-            await api.put(`/ticketEdit/${id}`, {
-                headers: {
-                    user_id,
-                    admin
-                },
-                subject: tmpSubject,
-                assignTo: tmpAssignTo,
-                category: tmpCategory,
-                priority: tmpPriority,
-                duedate: tmpDuedate,
-                description: tmpDescription,
-                status: tmpStatus
-            }).then((res) => {
-                alert('Alterado com sucesso!')
-            }).catch((err) => {
-                alert('algo deu errado, verifique e tente novamente!' + err)
-            });
-        }
-    }
-
 
     useEffect(() => {
         api.get(`ticket/${id}`)
@@ -85,15 +40,42 @@ const TicketInfo = () => {
             })
     }, [id, ticket]);
 
-    useEffect(() => {
+    async function handleSaveChanges(e) {
+        e.preventDefault();
+        
+        await api.put(`/ticketEdit/${id}`, {
+            subject: tmpSubject,
+            assignTo: tmpAssignTo,
+            category: tmpCategory,
+            priority: tmpPriority,
+            duedate: tmpDuedate,
+            description: tmpDescription,
+            status: tmpStatus,
+            estimated: tmpItEstimated
+        }, {
+            headers: {
+                user_id,
+                admin
+            }
+        }).then((res) => {
+            alert('Alterado com sucesso!')
+        }).catch((err) => {
+            alert('algo deu errado, verifique e tente novamente!' + (err))
+        });
+        setUserEdit(false);
+    }    
+
+    useEffect(() => {        
         setTmpSubject(localStorage.getItem('tmpSubject'));
         setTmpAssignTo(localStorage.getItem('tmpAssignTo'));
         setTmpPriority(localStorage.getItem('tmpPriority'));
         setTmpCategory(localStorage.getItem('tmpCategory'));
         setTmpDueDate(localStorage.getItem('tmpDueDate'));
+        setTmpItEstimated(localStorage.getItem('tmpEstimated'));
         setTmpDescription(localStorage.getItem('tmpDescription'));
         setTmpStatus(localStorage.getItem('tmpStatus'));
     }, [userEdit]);
+    
 
     function handlTicketEdit(e) {
         e.preventDefault();
@@ -129,7 +111,7 @@ const TicketInfo = () => {
         }
     }
 
-    function handleSetModalVisibility(e) {
+    function handleModalVisibility(e) {
         e.preventDefault();
         if (isClicked === true) {
             setIsClicked(false);
@@ -141,9 +123,15 @@ const TicketInfo = () => {
         }
     }
 
+    function sendComment(send) {
+        if(send === true) {
+            setIsClicked(false);
+        }
+    }
+
     return (
         <div id="ticket-info">
-            <ModalReply click={isClicked} visibility={handleSetModalVisibility} />
+            <ModalReply click={isClicked} enviar={sendComment} visibility={handleModalVisibility} />
             <Header />
             <div className="container">
                 <div className="content-ticket">
@@ -221,6 +209,7 @@ const TicketInfo = () => {
                                     type="date"
                                     value={tmpDuedate}
                                     onChange={e => setTmpDueDate(e.target.value)}
+                                    min="2020-11-01" max="2030-12-31"
                                 />
                             }
                         </div>
@@ -231,10 +220,11 @@ const TicketInfo = () => {
                                     type="date"
                                     value={tmpItEstimated}
                                     onChange={e => setTmpItEstimated(e.target.value)}
+                                    min="2020-11-01" max="2030-12-31"
                                 />
                                 :
                                 <p>
-                                    IT Only
+                                    {ticket.estimated}
                                 </p>
                             }
                         </div>
