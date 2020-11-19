@@ -51,9 +51,9 @@
 }
 
 .content .subject strong {
-  font: 500 20px Poppins;
+  font: 500 18px Poppins;
   color: #191919;
-  text-shadow: 0 0 2px rgb(24, 24, 24);
+  text-shadow: 0 0 3px rgb(24, 24, 24);
 }
 
 .content .info {

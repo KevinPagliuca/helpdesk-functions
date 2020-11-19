@@ -31,6 +31,7 @@ const Header = () => {
                         <li><Link to="/newticket">Novo chamado</Link></li>
                         <li><Link to="/mytickets">Meus chamados</Link></li>
                         <li><Link to="/alltickets">Todos os chamados</Link></li>
+                        <li><Link to="/alltickets">Chamados Concluídos</Link></li>
                     </ul>
 
                     <div className="dropdown">
