@@ -81,13 +81,12 @@ module.exports = {
     },
 
     async closedTickets(req, res) {
-
         const closedTickets = await connection('tickets')
             .select('*')
             .where('status', 'Concluído');
 
         if (!closedTickets) {
-            return res.status(400).json({ Error: 'Algo não funcionou da maneira correta, tente novamente...' });
+            return res.status(404).json({ Error: 'Algo não funcionou da maneira correta, tente novamente...' });
         }
         return res.status(200).json(closedTickets);
     },

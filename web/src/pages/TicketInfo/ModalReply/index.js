@@ -16,22 +16,22 @@ const ModalReply = (props) => {
 
     async function handleSendComment(e) {
         e.preventDefault();
-         await api.post(`/ticket/${id}`, {
-             text
-         }, {
-             headers: {
-                 user_name,
-                 user_id_reply
-             }
-         }).then((res) => {
-             alert('Comentário enviado!!');                                 
-         }).catch((err) => {
-             alert('erro ' + err);
-         });     
-         setText('');     
-         props.enviar(true);
-         
-    }    
+        await api.post(`/ticket/${id}`, {
+            text
+        }, {
+            headers: {
+                user_name,
+                user_id_reply
+            }
+        }).then((res) => {
+            alert('Comentário enviado!!');
+        }).catch((err) => {
+            alert('erro ' + err);
+        });
+        setText('');
+        props.enviar(true);
+
+    }
 
     return (
         <>
@@ -50,7 +50,14 @@ const ModalReply = (props) => {
                                 value={text}
                             />
                             <div className="button-container">
-                                <button type="submit">Enviar</button>
+                                {text !== "" && text !== "  " && text.length > 2 ?
+                                    <button type="submit">Enviar</button>
+                                    :
+                                    <>
+                                        <button disabled type="submit">Enviar</button>                                        
+                                        <p>Comentário muito curto!</p>
+                                    </>
+                                }
                             </div>
                         </section>
                     </form>

@@ -60,10 +60,18 @@ const Myaccount = () => {
                             />
 
                             <div className="button-container">
-                                <button type="submit">
-                                    <FaLock size={22} />
-                                Salvar
-                            </button>
+                                {name === localStorage.getItem('user_name')
+                                &&
+                                email === localStorage.getItem('user_email')
+                                &&
+                                dept === localStorage.getItem('user_dept')
+                                &&
+                                role === localStorage.getItem('user_role')
+                                ?
+                                    <button type="submit" disabled><FaLock size={22} />Salvar</button>
+                                    :
+                                    <button type="submit"><FaLock size={22} />Salvar</button>
+                                }
                             </div>
 
                         </form>

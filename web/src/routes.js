@@ -8,6 +8,7 @@ import MyTickets from './pages/MyTickets';
 import AllTickets from './pages/AllTickets';
 import NewTicket from './pages/NewTicket';
 import TicketInfo from './pages/TicketInfo';
+import ClosedTickets from './pages/CompletedTickets';
 import Admin from './pages/Admin';
 
 export default function Routes() {
@@ -22,10 +23,13 @@ export default function Routes() {
                 <Route path="/" exact component={Login} />
                 <Route path="/register" exact component={Register} />
                 <Route path="/myaccount" exact component={Myaccount} />
+
                 <Route path="/mytickets" exact component={MyTickets} />
                 <Route path="/alltickets" exact component={AllTickets} />
                 <Route path="/newticket" exact component={NewTicket} />
+                <Route path="/closedTickets" exact component={ClosedTickets} />                
                 <Route path="/ticket/:id" exact component={TicketInfo} />
+                
                 <Route path="/admin" exact component={Admin} />
             </Switch>
         </BrowserRouter>

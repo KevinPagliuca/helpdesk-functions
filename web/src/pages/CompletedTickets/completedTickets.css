@@ -1,0 +1,39 @@
+#completedTickets {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(37, 38, 39);
+    padding-bottom: 20px;
+}
+
+
+#completedTickets .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    max-width: 1300px;
+    width: 100%;
+    margin-top: 30px;    
+    background: rgb(23, 24, 25);
+    box-shadow: 0 0 20px rgb(23, 24, 25);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+#completedTickets .container h3 {
+    color: #f0f0f0;
+    font: 500 24px Poppins;
+    padding: 20px 0;
+}
+
+#completedTickets .container .tickets {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+}

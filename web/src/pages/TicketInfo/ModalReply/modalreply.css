@@ -67,10 +67,6 @@
     width: 100%;
 }
 
-.modal-content form div button:hover {
-    background-color: rgb(23, 24, 25) !important;
-}
-
 .modal-content::-webkit-scrollbar {
     display: none;
 }

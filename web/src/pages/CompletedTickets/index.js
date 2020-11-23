@@ -4,32 +4,30 @@ import { Link } from 'react-router-dom';
 import Header from '../../components/Header';
 import TicketItem from '../../components/TicketItem';
 
-import './alltickets.css';
 import api from '../../services/api';
 
-const AllTickets = (props) => {
-    const [tickets, setTickets] = useState([]);
+import './completedTickets.css';
 
+const ClosedTickets = () => {
+    const [closedTickets, setClosedTickets] = useState([]);
 
     useEffect(() => {
-        async function AllTicketsList() {
-            const res = await api.get('alltickets');
-            setTickets(res.data);
+        async function ClosedTicketsList() {
+            const res = await api.get('closedtickets');
+            setClosedTickets(res.data);
         }
-
-        AllTicketsList();
-    }, [])
-
+        ClosedTicketsList();
+    })
     return (
-        <div id="alltickets">
+        <div id="completedTickets">
             <Header />
             <div className="container">
-                <h3>Aqui estão todos os chamados em aberto...</h3>
+                <h3>Aqui estão todos os chamados já concluídos...</h3>
 
                 <div className="tickets">
-                    {tickets.length !== 0
+                    {closedTickets.length !== 0
                         ?
-                        tickets.map(ticket => ( 
+                        closedTickets.map(ticket => (
                             <TicketItem
                                 key={ticket.id}
                                 id={ticket.id}
@@ -39,6 +37,7 @@ const AllTickets = (props) => {
                                 priority={ticket.priority}
                                 category={ticket.category}
                                 status={ticket.status}
+                                close="closedTicket"
                             />
                         ))
                         :
@@ -51,10 +50,9 @@ const AllTickets = (props) => {
                         </div>
                     }
                 </div>
-                
             </div>
         </div>
     );
 }
 
-export default AllTickets;
+export default ClosedTickets;

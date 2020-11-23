@@ -31,6 +31,20 @@
     justify-content: center;
 }
 
+#header .disabled-link {
+    background: rgba(255, 53, 53, 0.5);
+}
+
+#header .disabled-link:hover {
+    background: rgb(255, 53, 53);
+    box-shadow: 0 0 10px rgb(255, 53, 53);
+}
+
+#header .disabled-link a {
+    cursor: not-allowed;
+    text-decoration: line-through solid rgb(255, 53, 53);
+}
+
 .nav-container ul {
     display: flex;
     align-items: center;

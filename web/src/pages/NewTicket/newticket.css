@@ -40,13 +40,3 @@
 #newticket .container .form-newticket .input-block {
   width: 100%;
 }
-
-.button-container button {
-  background: rgb(0, 153, 255) !important;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 1) !important;
-}
-
-.button-container button:hover {
-  background: rgb(40, 153, 40) !important;
-  transition: all .3s ease-in-out !important;
-}

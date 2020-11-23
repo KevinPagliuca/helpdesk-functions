@@ -18,6 +18,17 @@
   transition: all .2s ease-in-out;
 }
 
+.closedTicket:hover {
+  background: rgb(200, 53, 53) !important;
+  box-shadow: 0 0 10px rgb(200, 53, 53) !important;
+  transition: all .2s ease-in-out;
+}
+
+.closedTicket:hover svg {
+  color: #f0f0f0 !important;
+  transition: color .3s ease-in-out;
+}
+
 .content:hover .subject strong, .content:hover .info div>p, .content:hover .info div>strong {
   color: #fff;
   transition: color .2s ease-in-out;
