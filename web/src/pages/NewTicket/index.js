@@ -28,26 +28,44 @@ const NewTicket = () => {
 
     async function handleOpenNewTicket(e) {
         e.preventDefault();
-        api.post('newticket', {
-            subject,
-            priority,
-            category,
-            assignTo,
-            duedate,
-            status,
-            description
-        }, {
-            headers: {
-                user_name: userName,
-                user_email: email,
-                user_id: id
-            }
-        }).then((res) => {
-            alert('Chamado cadastrado com sucesso');
-            history.push(`/ticket/${res.data.id}`);
-        }).catch((err) => {
-            alert(err);
-        })
+        if (subject !== ""
+            &&
+            priority !== ""
+            &&
+            category !== ""
+            &&
+            assignTo !== ""
+            &&
+            duedate !== ""
+            &&
+            description !== ""
+            &&
+            agents !== ""
+            &&
+            status !== "") {
+            await api.post('newticket', {
+                subject,
+                priority,
+                category,
+                assignTo,
+                duedate,
+                status,
+                description
+            }, {
+                headers: {
+                    user_name: userName,
+                    user_email: email,
+                    user_id: id
+                }
+            }).then((res) => {
+                alert('Chamado cadastrado com sucesso');
+                history.push(`/ticket/${res.data.id}`);
+            }).catch((err) => {
+                alert(err);
+            })
+        } else {
+            alert('Preencha todos os campos!!');
+        }
     }
 
     useEffect(() => {

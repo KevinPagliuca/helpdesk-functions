@@ -42,10 +42,9 @@ const ClosedTickets = () => {
                         ))
                         :
                         <div className="error-ticket">
-                            <h4>Não temos nenhum chamado cadastrado no nosso sistema, Seja
-                            o primeiro!! <br /><Link to="newticket">Clique Aqui para começar!</Link>
+                            <h4>Não temos nenhum chamado concluído ainda.
+                            <br /><Link to="myaccount">Clique aqui para voltar ao início</Link>
                                 <br />
-                                <p style={{ color: 'rgb(0, 153, 255)' }}>#bethefirst</p>
                             </h4>
                         </div>
                     }

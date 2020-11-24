@@ -49,8 +49,8 @@
 }
 
 #myaccount .container .account-svg img {
-    height: 100% !important;
-    width: 100% !important;
+    height: 80% !important;
+    width: 80% !important;
 }
 
 #myaccount .button-container button {

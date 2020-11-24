@@ -89,7 +89,7 @@
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-    padding: 10px 5px;
+    padding: 10px 20px;
     margin: 15px 0;
     width: 100%;
     box-shadow: 0 0 7px #bbb;
@@ -103,30 +103,38 @@
     margin-bottom: 10px;
 }
 
-#ticket-info .description p {
-    width: 100%;
-    padding: 0 30px;
-    margin: 10px 0;
-    text-align: justify;
+#ticket-info .read-only {
+    box-shadow: none !important;
+    background: transparent !important;
+    resize: none !important;
+    min-height: 150px !important;
+    height: 100% !important;
+    width: 100% !important;
+    text-align: justify !important;
     line-height: 35px !important;
-    font: 400 16px Poppins;    
+    font: 400 15px Poppins !important;
+    cursor: default;
 }
 
 #ticket-info .description textarea {
     width: 100%;
-    padding: 20px;
+    padding: 20px 10px;
     line-height: 24px;
     min-height: 350px;
     border: 0;
-    border-radius: 8px;
-    background: #f0f0f0;
-    box-shadow: 0 0 7px rgb(0, 153, 255);
+    border-radius: 12px;
     resize: vertical;
-    font: 400 14px Poppins;    
+    font: 400 14px Poppins;
     text-align: justify;
     line-height: 35px;
     text-shadow: 0 0 2px rgb(37, 38, 39);
+    background: #c7c7c7;
     overflow: scroll;
+    margin-bottom: 20px;
+}
+
+#ticket-info .description textarea::-webkit-scrollbar {
+    display: none;
 }
 
 #ticket-info input, #ticket-info select {
@@ -184,7 +192,7 @@
 }
 
 #ticket-info .actions .between button.animated {
-    animation: shine 1.5s ease-in-out infinite;
+    animation: bounce 3s infinite;
 }
 
 #ticket-info .actions .between button.animated:hover {
@@ -265,6 +273,10 @@
     font-size: 18px;
 }
 
+#ticket-info .read-only::-webkit-scrollbar {
+    display: none;
+}
+
 @keyframes shine {
     from {
         box-shadow: 0 0 30px 4px rgb(37, 38, 39);
@@ -274,4 +286,10 @@
         box-shadow: 0 0 0 0 rgb(0, 0, 0, 0);
         transform: scale(1);
     }
+}
+
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}	
+	40% {-webkit-transform: translateY(-30px);}
+	60% {-webkit-transform: translateY(-15px);}
 }

@@ -33,8 +33,13 @@
 #newticket .container .form-newticket {
   display: flex;
   flex-direction: column;
-  min-width: 550px;
+  min-width: 650px;
   padding-top: 20px;
+  background: rgb(28, 28, 28);
+  box-shadow: 0 0 15px rgb(0, 0, 0);
+  padding: 10px 30px;
+  margin: 15px;
+  border-radius: 12px;
 }
 
 #newticket .container .form-newticket .input-block {

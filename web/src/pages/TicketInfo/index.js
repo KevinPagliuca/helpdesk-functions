@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from 'react';
 import { useParams } from 'react-router-dom';
-import { FaRegClock, FaPen, FaRegCommentDots, FaSave } from 'react-icons/fa';
+import { FaRegClock, FaPen, FaSave, FaTimesCircle, FaCommentDots } from 'react-icons/fa';
 
 import Header from '../../components/Header';
 
@@ -42,7 +42,7 @@ const TicketInfo = () => {
 
     async function handleSaveChanges(e) {
         e.preventDefault();
-        
+
         await api.put(`/ticketEdit/${id}`, {
             subject: tmpSubject,
             assignTo: tmpAssignTo,
@@ -63,9 +63,9 @@ const TicketInfo = () => {
             alert('algo deu errado, verifique e tente novamente!' + (err))
         });
         setUserEdit(false);
-    }    
+    }
 
-    useEffect(() => {        
+    useEffect(() => {
         setTmpSubject(localStorage.getItem('tmpSubject'));
         setTmpAssignTo(localStorage.getItem('tmpAssignTo'));
         setTmpPriority(localStorage.getItem('tmpPriority'));
@@ -74,8 +74,14 @@ const TicketInfo = () => {
         setTmpItEstimated(localStorage.getItem('tmpEstimated'));
         setTmpDescription(localStorage.getItem('tmpDescription'));
         setTmpStatus(localStorage.getItem('tmpStatus'));
+
+        if (userEdit === true) {
+            document.getElementById("description").classList.add('active');
+        } else {
+            document.getElementById("description").classList.remove('active');
+        }
     }, [userEdit]);
-    
+
 
     function handlTicketEdit(e) {
         e.preventDefault();
@@ -124,10 +130,15 @@ const TicketInfo = () => {
     }
 
     function sendComment(send) {
-        if(send === true) {
+        if (send === true) {
             setIsClicked(false);
         }
     }
+
+    function handleCancel(e) {
+        e.preventDefault();
+        setUserEdit(false);
+    } 
 
     return (
         <div id="ticket-info">
@@ -248,10 +259,16 @@ const TicketInfo = () => {
                         </div>
                     </div>
 
-                    <div className="description">
+                    <div id="description" className="description">
                         <strong>Descrição</strong>
                         {userEdit === false ?
-                            <p>{ticket.description}</p>
+                            <textarea
+                                readOnly
+                                value={tmpDescription}
+                                className="read-only"
+                            >
+                                {ticket.description}
+                            </textarea>
                             :
                             <textarea
                                 value={tmpDescription}
@@ -265,12 +282,13 @@ const TicketInfo = () => {
                     <div className="actions">
                         {userEdit === true ?
                             <div className="btn-action between">
-                                <button onClick={handleModalAppear}><FaRegCommentDots size={33} />Comentar</button>
+                                <button onClick={handleModalAppear}><FaCommentDots size={33} />Comentar</button>
                                 <button onClick={handleSaveChanges} className="animated"><FaSave size={33} />Salvar</button>
+                                <button onClick={handleCancel}><FaTimesCircle size={33} />Cancelar</button>
                             </div>
                             :
                             <div className="btn-action">
-                                <button onClick={handleModalAppear}><FaRegCommentDots size={33} />Comentar</button>
+                                <button onClick={handleModalAppear}><FaCommentDots size={33} />Comentar</button>
                             </div>
                         }
                     </div>

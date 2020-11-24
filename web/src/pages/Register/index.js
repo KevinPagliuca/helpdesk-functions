@@ -57,11 +57,19 @@ const Register = () => {
                     label="Departamento"
                     placeholder="Selecione um departamento"
                     options={[
-                        { value: 'Tecnologia' },
-                        { value: 'Adm. de Vendas' },
-                        { value: 'Fiscal' },
-                        { value: 'RH' },
-                        { value: 'Financeiro' }
+                        { name: 'Administração' },
+                        { name: 'Adm. de Vendas' },
+                        { name: 'Fiscal' },
+                        { name: 'Key Account' },
+                        { name: 'Marketing I' },
+                        { name: 'Marketing II' },
+                        { name: 'Marketing III' },
+                        { name: 'Marketing IV' },
+                        { name: 'Marketing V' },
+                        { name: 'Recursos Humanos' },
+                        { name: 'SCM' },
+                        { name: 'Tecnologia' },
+                        { name: 'Vendas' },
                     ]}
 
                     value={dept}
