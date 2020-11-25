@@ -10,7 +10,9 @@ exports.up = function(knex){
         table.date('estimated').defaultTo('IT Only');
         table.string('description').notNullable();
         table.string('assignTo').notNullable();     
-        table.string('status').defaultTo('Novo');     
+        table.string('status').defaultTo('Novo');  
+        table.decimal('version', 1).defaultTo(1);
+        table.string('last_update').defaultTo('');
         table.timestamp('created_at');
         table.timestamp('updated_at');
 

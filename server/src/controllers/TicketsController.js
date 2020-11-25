@@ -29,6 +29,7 @@ module.exports = {
             status,
             user_id,
             user_name,
+            last_update: user_name,
             created_at: DataHoje,
             updated_at: DataHoje
         });
@@ -61,6 +62,7 @@ module.exports = {
         if (!ticket) {
             return res.status(400).json({ Erro: "Algo deu errado..." });
         } else {
+            console.log(ticket.version);
             return res.status(200).json([ticket, reply_ticket]);
         }
 
@@ -94,6 +96,7 @@ module.exports = {
     async ticketEdit(req, res) {
         const { id } = req.params;
         const user_id = req.headers.user_id;
+        const user_name = req.headers.user_name;
         const admin = req.headers.admin;
 
         const { subject, category, priority, duedate, description, assignTo, status, estimated } = req.body;
@@ -120,6 +123,8 @@ module.exports = {
                         estimated,
                         assignTo,
                         status,
+                        version: ticket.version + 1,
+                        last_update: user_name,
                         updated_at: DataHoje
                     });
 
