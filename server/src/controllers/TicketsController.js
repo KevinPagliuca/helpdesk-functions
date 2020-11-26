@@ -61,8 +61,7 @@ module.exports = {
 
         if (!ticket) {
             return res.status(400).json({ Erro: "Algo deu errado..." });
-        } else {
-            console.log(ticket.version);
+        } else {            
             return res.status(200).json([ticket, reply_ticket]);
         }
 
@@ -105,7 +104,7 @@ module.exports = {
             .select('*')
             .where('id', id)
             .first();
-            
+
         if (ticket) {
             var date = new Date();
             const DataHoje = date.toLocaleString();
@@ -127,6 +126,22 @@ module.exports = {
                         last_update: user_name,
                         updated_at: DataHoje
                     });
+
+                if (status === 'Concluído') {
+                    if (estimated < duedate) {
+                        await connection('tickets')
+                            .where('id', id)
+                            .update({
+                                due_expired: 0
+                            });
+                    } else {
+                        await connection('tickets')
+                            .where('id', id)
+                            .update({
+                                due_expired: 1
+                            });
+                    }
+                }
 
                 res.status(200).json({ Success: 'Alterado com sucesso!' });
             } else {

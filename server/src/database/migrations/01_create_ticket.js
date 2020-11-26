@@ -13,6 +13,7 @@ exports.up = function(knex){
         table.string('status').defaultTo('Novo');  
         table.decimal('version', 1).defaultTo(1);
         table.string('last_update').defaultTo('');
+        table.boolean('due_expired').defaultTo(null);
         table.timestamp('created_at');
         table.timestamp('updated_at');
 

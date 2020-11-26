@@ -9,15 +9,17 @@ import api from '../../services/api';
 import './completedTickets.css';
 
 const ClosedTickets = () => {
-    const [closedTickets, setClosedTickets] = useState([]);
+    const [tickets, setTickets] = useState([]);
+
 
     useEffect(() => {
-        async function ClosedTicketsList() {
-            const res = await api.get('closedtickets');
-            setClosedTickets(res.data);
+        async function completedTicketList() {
+            const res = await api.get('alltickets');
+            setTickets(res.data);
         }
-        ClosedTicketsList();
-    })
+        completedTicketList();
+    }, []);
+
     return (
         <div id="completedTickets">
             <Header />
@@ -25,9 +27,9 @@ const ClosedTickets = () => {
                 <h3>Aqui estão todos os chamados já concluídos...</h3>
 
                 <div className="tickets">
-                    {closedTickets.length !== 0
+                    {tickets.length !== 0
                         ?
-                        closedTickets.map(ticket => (
+                        tickets.map(ticket => (
                             <TicketItem
                                 key={ticket.id}
                                 id={ticket.id}

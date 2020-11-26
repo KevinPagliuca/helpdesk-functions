@@ -78,7 +78,7 @@ const NewTicket = () => {
                 })
         }
         getAgents();
-    }, [agents]);
+    }, []);
 
     return (
         <div id="newticket">

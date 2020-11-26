@@ -16,7 +16,6 @@ const AllTickets = (props) => {
             const res = await api.get('alltickets');
             setTickets(res.data);
         }
-
         AllTicketsList();
     }, [])
 
