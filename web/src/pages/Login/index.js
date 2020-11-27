@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import InputBlock from '../../components/InputBlock';
 
 import api from '../../services/api';
+
 import './login.css';
 
 const Login = () => {
@@ -32,8 +33,8 @@ const Login = () => {
             }
         }).catch((err) => {
             let message = err.response.data.Error;
+            console.log(message);
             alert(message);
-            console.log(message)
         })
     }
 

@@ -13,20 +13,20 @@
     color: #fff;
     border-radius: 4px;
     background: rgb(0, 153, 255);
-    box-shadow: 0 0 15px rgb(0, 153, 255) !important;
+    box-shadow: 0 0 7px rgb(0, 153, 255) !important;
     text-shadow: 0 0 8px rgb(0, 0, 0);
 }
 
 .button-container button:hover {
     background: rgb(53, 180, 53);
-    box-shadow: 0 0 15px rgb(53, 180, 53) !important;
+    box-shadow: 0 0 7px rgb(53, 180, 53) !important;
     text-shadow: 0 0 8px rgb(0, 0, 0);
     transition: all 0.5s;
 }
 
 .button-container button:disabled {
     background: rgb(255, 53, 53) !important;
-    box-shadow: 0 0 8px rgb(255, 53, 53) !important;
+    box-shadow: 0 0 7px rgb(255, 53, 53) !important;
     cursor: not-allowed;
     transition: all .3s ease-in-out;
 }

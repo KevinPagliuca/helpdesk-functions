@@ -14,7 +14,7 @@ const ClosedTickets = () => {
 
     useEffect(() => {
         async function completedTicketList() {
-            const res = await api.get('alltickets');
+            const res = await api.get('closedtickets');
             setTickets(res.data);
         }
         completedTicketList();

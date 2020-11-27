@@ -1,6 +1,5 @@
 const connection = require('../database/connection');
 
-
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
@@ -45,7 +44,6 @@ module.exports = {
         var date = new Date();
         const DataHoje = date.toLocaleString();
 
-
         if (!consult) {
             await bcrypt.hash(password, saltRounds, async (err, hash) => {
                 const insertUser = await connection('users').insert({
@@ -61,8 +59,7 @@ module.exports = {
             });
 
         } else {
-            res.status(400).json({ Error: "E-mail já existe!" })
-
+            res.status(400).json({ Error: "E-mail já existe!" });
         }
     },
 

@@ -28,7 +28,7 @@ const AllTickets = (props) => {
                 <div className="tickets">
                     {tickets.length !== 0
                         ?
-                        tickets.map(ticket => ( 
+                        tickets.map(ticket => (
                             <TicketItem
                                 key={ticket.id}
                                 id={ticket.id}
@@ -42,15 +42,13 @@ const AllTickets = (props) => {
                         ))
                         :
                         <div className="error-ticket">
-                            <h4>Não temos nenhum chamado cadastrado no nosso sistema, Seja
-                            o primeiro!! <br /><Link to="newticket">Clique Aqui para começar!</Link>
-                                <br />
-                                <p style={{ color: 'rgb(0, 153, 255)' }}>#bethefirst</p>
+                            <h4>Não temos nenhum chamado em andamento no nosso sistema.
+                                <br /><Link to="newticket">Clique Aqui para solicitar a abertura de um chamado.</Link>
                             </h4>
                         </div>
                     }
                 </div>
-                
+
             </div>
         </div>
     );

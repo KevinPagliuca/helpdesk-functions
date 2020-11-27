@@ -30,31 +30,32 @@ const MyTickets = () => {
       <Header />
       <div className="container">
 
-      <h3>Meus chamados em aberto...</h3>
+        <h3>Meus chamados em aberto...</h3>
         <div className="tickets">
           {listTickets.length !== 0
             ?
             listTickets.map(ticket => (
-              <TicketItem  
-                key={ticket.id}              
+              <TicketItem
+                key={ticket.id}
                 id={ticket.id}
                 subject={ticket.subject}
                 assignTo={ticket.assignTo}
                 duedate={ticket.duedate}
                 priority={ticket.priority}
                 category={ticket.category}
-                status={ticket.status}              
+                status={ticket.status}
               />
             ))
             :
             <div className="error-ticket">
               <h4>Você não tem nenhum chamado cadastrado para
-                  ser listado, <Link to="newticket">Clique Aqui</Link> para começar!
+              ser listado.
+                  <br />
+                <Link to="newticket">Clique Aqui</Link> para começar!
               </h4>
             </div>
           }
         </div>
-
       </div>
     </div>
   );
