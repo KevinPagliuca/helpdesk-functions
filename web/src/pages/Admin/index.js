@@ -1,9 +1,9 @@
 import React from 'react';
-
-import './admin.css';
+import { Redirect, Link } from 'react-router-dom';
 
 import Header from '../../components/Header';
-import { Redirect } from 'react-router-dom';
+
+import './admin.css';
 
 const Admin = () => {
 
@@ -33,10 +33,10 @@ const Admin = () => {
                             <p>Controle de usuários</p>
 
                             <div className="menu">
-                                <button>Criar nova conta Padrão</button>
-                                <button>Criar nova conta Administradora</button>
-                                <button>Alterar usuários</button>
-                                <button>Excluir usuários</button>
+                                <Link to="admin/createAccount">Criar nova conta Padrão</Link>
+                                <Link to="/createAdm" >Criar nova conta Administradora</Link>
+                                <Link to="/alterUser" >Alterar usuários</Link>
+                                <Link to="/excludeUser" >Excluir usuários</Link>
                             </div>
 
                         </div>
@@ -45,9 +45,9 @@ const Admin = () => {
                             <p>Relatórios</p>
 
                             <div className="menu">
-                                <button>Chamados atendidos neste mês</button>
-                                <button>Total de chamados neste mês</button>
-                                <button>Tendências</button>
+                                <Link to="/reports">Chamados atendidos neste mês</Link>
+                                <Link to="/reports">Total de chamados neste mês</Link>
+                                <Link to="/reports">Tendências</Link>
                             </div>
 
                         </div>

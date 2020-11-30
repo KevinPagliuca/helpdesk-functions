@@ -9,7 +9,9 @@ import AllTickets from './pages/AllTickets';
 import NewTicket from './pages/NewTicket';
 import TicketInfo from './pages/TicketInfo';
 import ClosedTickets from './pages/CompletedTickets';
+
 import Admin from './pages/Admin';
+import CreateAccount from './pages/Admin/CreateAccount';
 
 export default function Routes() {
     const session = sessionStorage.getItem('status');
@@ -31,6 +33,7 @@ export default function Routes() {
                 <Route path="/ticket/:id" exact component={TicketInfo} />
                 
                 <Route path="/admin" exact component={Admin} />
+                <Route path="/admin/createAccount" exact component={CreateAccount} />
             </Switch>
         </BrowserRouter>
     );

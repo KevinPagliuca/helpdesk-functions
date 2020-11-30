@@ -1,0 +1,72 @@
+#createAccount {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+    background: rgb(37, 38, 39);
+    padding-bottom: 30px;
+}
+
+#createAccount .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    max-width: 1300px;
+    width: 100%;
+    padding: 20px 50px;
+    margin-top: 30px;
+    color: #f0f0f0;
+    background: rgb(24, 25, 26);
+    box-shadow: 0 0 15px rgb(24, 25, 26);
+    border-radius: 12px;
+}
+
+#createAccount .container form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+}
+
+#createAccount .container form h3 {
+    padding: 15px 0;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgb(37, 38, 39);
+    max-width: 650px;
+    width: 100%;
+}
+
+#createAccount .container form .input-block {
+    max-width: 650px;
+    width: 100%;
+}
+
+#createAccount .container form .select-block {
+    max-width: 650px;
+    width: 100%;
+    margin-right: 10px;
+}
+
+#createAccount .container form .dualInput {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 650px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#createAccount .container form .dualInput .input-block {
+    margin-bottom: 0 !important;
+    margin-top: 10px !important;
+}
+
+#createAccount .container form .button-container {
+    max-width: 650px;
+    width: 100%;
+}

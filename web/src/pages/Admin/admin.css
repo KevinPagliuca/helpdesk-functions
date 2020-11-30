@@ -63,16 +63,20 @@
     margin: 20px 0;
 }
 
-#admin .configuration .menu-content .menu button {
+#admin .configuration .menu-content .menu a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 15px;
     background: transparent;
     border: 1px solid #f0f0f0;
     border-radius: 4px;
     color: #f0f0f0;
     font: 400 14px Poppins;
+    text-decoration: none;
 }
 
-#admin .configuration .menu-content .menu button:hover {
+#admin .configuration .menu-content .menu a:hover {
     background: rgb(0, 153, 255);
     box-shadow: 0 0 15px rgb(0, 153, 255);
     border: 1px solid transparent;
