@@ -42,6 +42,7 @@ const Register = () => {
                     label="Nome Completo"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    required
                 />
                 <InputBlock
                     id="email"
@@ -51,6 +52,7 @@ const Register = () => {
 
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    required
                 />
                 <SelectBlock
                     id="departamento"
@@ -74,6 +76,7 @@ const Register = () => {
 
                     value={dept}
                     onChange={e => setDept(e.target.value)}
+                    required
                 />
 
                 <InputBlock
@@ -83,6 +86,7 @@ const Register = () => {
                     label="Cargo"
                     value={role}
                     onChange={e => setRole(e.target.value)}
+                    required
                 />
 
                 <InputBlock
@@ -92,6 +96,7 @@ const Register = () => {
                     label="Senha"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    required                    
                 />
 
                 <div className="button-container" >

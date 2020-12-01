@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { FaLock } from 'react-icons/fa';
+import { FaLock, FaUnlock } from 'react-icons/fa';
 
 import Header from '../../components/Header';
 
@@ -34,6 +34,7 @@ const Myaccount = () => {
                                 type="text"
                                 value={name}
                                 onChange={e => setName(e.target.value)}
+                                required
                             />
                             <InputBlock
                                 id="email"
@@ -41,6 +42,7 @@ const Myaccount = () => {
                                 type="email"
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
+                                required
                             />
 
                             <InputBlock
@@ -49,6 +51,7 @@ const Myaccount = () => {
                                 type="text"
                                 value={dept}
                                 onChange={e => setDept(e.target.value)}
+                                required
                             />
 
                             <InputBlock
@@ -57,6 +60,7 @@ const Myaccount = () => {
                                 type="text"
                                 value={role}
                                 onChange={e => setRole(e.target.value)}
+                                required
                             />
 
                             <div className="button-container">
@@ -70,7 +74,7 @@ const Myaccount = () => {
                                 ?
                                     <button type="submit" disabled><FaLock size={22} />Salvar</button>
                                     :
-                                    <button type="submit"><FaLock size={22} />Salvar</button>
+                                    <button type="submit"><FaUnlock size={22} />Salvar</button>
                                 }
                             </div>
 

@@ -14,16 +14,15 @@ const Header = () => {
         localStorage.clear();
         sessionStorage.removeItem('status');
         sessionStorage.removeItem('admin');
-
         history.push('/');
     }
 
     return (
         <header id="header">
             <nav className="navbar">
-                <div className="logo">
-                    <img src={logoImg} alt="teste" />
-                </div>
+                <Link className="logo" to="/myaccount">
+                    <img src={logoImg} alt="logo" />
+                </Link>
 
                 <div className="nav-container">
                     <ul>

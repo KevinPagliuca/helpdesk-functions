@@ -85,15 +85,16 @@ const NewTicket = () => {
             <Header />
             <div className="container">
 
-                <h3>Preencha o formulário abaixo para abrir seu chamado</h3>
                 <div className="content-newticket">
                     <form className="form-newticket" onSubmit={handleOpenNewTicket}>
+                        <h3>Preencha o formulário abaixo para abrir seu chamado</h3>
                         <InputBlock
                             id="subject"
                             label="Assunto"
                             type="text"
                             value={subject}
                             onChange={e => setSubject(e.target.value)}
+                            required
                         />
 
                         <InputBlock
@@ -102,6 +103,7 @@ const NewTicket = () => {
                             type="date"
                             value={duedate}
                             onChange={e => setDueDate(e.target.value)}
+                            required
                         />
 
                         <SelectBlock
@@ -112,6 +114,7 @@ const NewTicket = () => {
                             value={assignTo}
                             onChange={e => setAssignTo(e.target.value)}
                             options={agents}
+                            required
                         />
 
                         <SelectBlock
@@ -122,31 +125,16 @@ const NewTicket = () => {
                             value={category}
                             onChange={e => console.log(setCategory(e.target.value))}
 
-                            options={
-                                [
-                                    {
-                                        name: "E-mail"
-                                    },
-                                    {
-                                        name: "SAP"
-                                    },
-                                    {
-                                        name: "Websites"
-                                    },
-                                    {
-                                        name: "Office"
-                                    },
-                                    {
-                                        name: "Computador"
-                                    },
-                                    {
-                                        name: "Excel"
-                                    },
-                                    {
-                                        name: "Outros"
-                                    }
-                                ]
-                            }
+                            options={[
+                                { name: "E-mail" },
+                                { name: "SAP" },
+                                { name: "Websites" },
+                                { name: "Office" },
+                                { name: "Computador" },
+                                { name: "Excel" },
+                                { name: "Outros" }
+                            ]}
+                            required
                         />
 
                         <SelectBlock
@@ -155,25 +143,13 @@ const NewTicket = () => {
                             placeholder="Selecione uma prioridade"
                             value={priority}
                             onChange={e => setPriority(e.target.value)}
-                            options={
-                                [
-                                    {
-                                        name: "Baixa"
-                                    },
-
-                                    {
-                                        name: "Média"
-                                    },
-
-                                    {
-                                        name: "Alta"
-                                    },
-
-                                    {
-                                        name: "Urgente"
-                                    }
-                                ]
-                            }
+                            options={[
+                                { name: "Baixa" },
+                                { name: "Média" },
+                                { name: "Alta" },
+                                { name: "Urgente" }
+                            ]}
+                            required
                         />
 
                         <SelectBlock
@@ -182,25 +158,14 @@ const NewTicket = () => {
                             placeholder="Status desse chamado"
                             value={status}
                             onChange={e => setStatus(e.target.value)}
-                            options={
-                                [
-                                    {
-                                        name: "Novo"
-                                    },
-                                    {
-                                        name: "Em aberto"
-                                    },
-                                    {
-                                        name: "Em progresso..."
-                                    },
-                                    {
-                                        name: "Aguardando matriz/usuário"
-                                    },
-                                    {
-                                        name: "Concluído"
-                                    }
-                                ]
-                            }
+                            options={[
+                                { name: "Novo" },
+                                { name: "Em aberto" },
+                                { name: "Em progresso..." },
+                                { name: "Aguardando matriz/usuário" },
+                                { name: "Concluído" }
+                            ]}
+                            required
                         />
 
                         <TextAreaBlock
@@ -210,6 +175,7 @@ const NewTicket = () => {
 
                             value={description}
                             onChange={e => setDescription(e.target.value)}
+                            required
                         />
 
                         <div className="button-container">

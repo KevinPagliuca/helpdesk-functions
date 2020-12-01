@@ -34,9 +34,8 @@ const Admin = () => {
 
                             <div className="menu">
                                 <Link to="admin/createAccount">Criar nova conta Padrão</Link>
-                                <Link to="/createAdm" >Criar nova conta Administradora</Link>
-                                <Link to="/alterUser" >Alterar usuários</Link>
-                                <Link to="/excludeUser" >Excluir usuários</Link>
+                                <Link to="admin/createAdministrator" >Criar nova conta Administradora</Link>
+                                <Link to="admin/Users" >Usuários</Link>
                             </div>
 
                         </div>

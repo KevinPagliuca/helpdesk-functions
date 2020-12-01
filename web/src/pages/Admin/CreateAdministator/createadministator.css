@@ -1,4 +1,4 @@
-#createAccount {
+#createAdministrator {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -8,7 +8,7 @@
     padding-bottom: 30px;
 }
 
-#createAccount .container {
+#createAdministrator .container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,7 +24,7 @@
     border-radius: 12px;
 }
 
-#createAccount .container form {
+#createAdministrator .container form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,7 +35,7 @@
     border-radius: 12px;
 }
 
-#createAccount .container form h3 {
+#createAdministrator .container form h3 {
     padding: 15px 0;
     margin-bottom: 15px;
     border-bottom: 2px solid rgb(37, 38, 39);
@@ -43,18 +43,18 @@
     width: 100%;
 }
 
-#createAccount .container form .input-block {
+#createAdministrator .container form .input-block {
     max-width: 650px;
     width: 100%;
 }
 
-#createAccount .container form .select-block {
+#createAdministrator .container form .select-block {
     max-width: 650px;
     width: 100%;
     margin-right: 10px;
 }
 
-#createAccount .container form .dualInput {
+#createAdministrator .container form .dualInput {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -63,12 +63,12 @@
     margin-bottom: 10px;
 }
 
-#createAccount .container form .dualInput .input-block {
+#createAdministrator .container form .dualInput .input-block {
     margin-bottom: 0 !important;
     margin-top: 10px !important;
 }
 
-#createAccount .container form .button-container {
+#createAdministrator .container form .button-container {
     max-width: 650px;
     width: 100%;
 }

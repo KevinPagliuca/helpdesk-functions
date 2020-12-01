@@ -12,7 +12,12 @@ module.exports = {
             .where('id', id)
             .first();
 
-        return res.json(user);
+        const serializedUser = {
+            ...user,
+            image_url: `http://192.168.230.115:3333/uploads/${user.avatar}`,
+        };
+
+        return res.json(serializedUser);
     },
 
     async agents(req, res) {
@@ -22,7 +27,7 @@ module.exports = {
             .where('permission', 1);
 
         if (!consultarAgentes) {
-            res.status(500).json({ Erro: "Algo deu errado na sua consulta..." })
+            res.status(500).json({ Erro: "Algo deu errado na sua consulta..." });
         }
         res.status(200).json(consultarAgentes);
     },
@@ -55,12 +60,39 @@ module.exports = {
                     created_at: DataHoje,
                     updated_at: DataHoje
                 });
-                res.status(201).json({ id: insertUser[0] });
+                res.status(201).json({ id: insertUser[0], Success: 'Cadastrado com sucesso!' });
             });
-
         } else {
-            res.status(400).json({ Error: "E-mail já existe!" });
+            res.status(400).json({ Error: "Email já existente no sistema." });
         }
+    },
+
+    async update(req, res) {
+        const {
+            name,
+            email,
+            dept,
+            role,
+            password
+        } = req.body;
+
+        var date = new Date();
+        const DataHoje = date.toLocaleString();
+
+        const user = {
+            avatar: req.file.filename,
+            name,
+            email,
+            dept,
+            role,
+            password,
+            updated_at: DataHoje
+        };
+
+        const updateUser = await connection('users').update(user);
+
+        return res.json(updateUser);
+
     },
 
     async createAdmin(req, res) {
@@ -93,11 +125,11 @@ module.exports = {
                     created_at: DataHoje,
                     updated_at: DataHoje
                 });
-                res.status(201).json({ id: insertUser[0] });
+                res.status(201).json({ id: insertUser[0], Success: 'Cadastrado com sucesso!' });
             });
 
         } else {
-            res.status(400).json({ Error: "E-mail já existe!" })
+            res.status(400).json({ Error: "Email já existente no sistema." })
 
         }
     },
@@ -109,7 +141,7 @@ module.exports = {
         } = req.body;
 
         const consult = await connection('users')
-            .select('id', 'name', 'email', 'dept', 'role', 'permission', 'created_at', 'updated_at')
+            .select('id', 'name', 'email', 'dept', 'avatar', 'role', 'permission', 'created_at', 'updated_at')
             .where('email', email)
             .first();
 
@@ -122,13 +154,18 @@ module.exports = {
             const match = await bcrypt.compare(password, findpass.password); // Faz a comparação da senha digitada com a senha cadastrada no BD
 
             if (match) {
-                return res.json(consult);
+
+                const serializedUser = {
+                    ...consult,
+                    image_url: `http://192.168.230.115:3333/uploads/${consult.avatar}`,
+                };
+                return res.json(serializedUser);
             } else {
                 return res.status(401).json({ Error: 'Sua senha está incorreta, verifique-a e tente novamente!' })
             }
         }
         if (!consult) {
-            return res.status(400).json({ Error: "O E-mail informado não está cadastrado em nosso sistema, tente novamente!" });
+            return res.status(400).json({ Error: "O Email informado não está cadastrado em nosso sistema, tente novamente!" });
         }
     },
 }

@@ -12,6 +12,7 @@ import ClosedTickets from './pages/CompletedTickets';
 
 import Admin from './pages/Admin';
 import CreateAccount from './pages/Admin/CreateAccount';
+import CreateAdministrator from './pages/Admin/CreateAdministator';
 
 export default function Routes() {
     const session = sessionStorage.getItem('status');
@@ -34,6 +35,7 @@ export default function Routes() {
                 
                 <Route path="/admin" exact component={Admin} />
                 <Route path="/admin/createAccount" exact component={CreateAccount} />
+                <Route path="/admin/createAdministrator" exact component={CreateAdministrator} />
             </Switch>
         </BrowserRouter>
     );

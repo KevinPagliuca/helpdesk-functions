@@ -14,10 +14,10 @@
   flex-direction: column;
   max-width: 1300px;
   width: 100%;
-  margin-bottom: 30px;
+  margin: 40px 0;
   background: rgb(23, 24, 25);
   box-shadow: 0 0 20px rgb(23, 24, 25);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px 10px;
 }
 
@@ -28,6 +28,7 @@
   padding: 10px;
   width: 100%;
   border-bottom: 2px solid #333;
+  margin-bottom: 20px;
 }
 
 #newticket .container .form-newticket {

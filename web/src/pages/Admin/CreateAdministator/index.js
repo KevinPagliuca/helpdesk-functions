@@ -4,11 +4,12 @@ import { Redirect } from 'react-router-dom';
 import Header from '../../../components/Header';
 import InputBlock from '../../../components/InputBlock';
 import SelectBlock from '../../../components/SelectBlock';
+
+import './createadministator.css';
+
 import api from '../../../services/api';
 
-import './createaccount.css';
-
-const CreateAccount = () => {
+const CreateAdministrator = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -20,7 +21,7 @@ const CreateAccount = () => {
 
     async function handleCreateUser(e) {
         e.preventDefault();
-        api.post('/register', {
+        api.post('register/admin', {
             name,
             email,
             dept,
@@ -35,11 +36,11 @@ const CreateAccount = () => {
 
     if (Admin) {
         return (
-            <div id="createAccount">
+            <div id="createAdministrator">
                 <Header />
                 <div className="container">
                     <form onSubmit={handleCreateUser}>
-                        <h3>Preencha o formulário abaixo para criar a conta do usuário.</h3>
+                        <h3>Preencha o formulário abaixo para realizar a criação do usuário Admistrador do sistema.</h3>
 
                         <InputBlock
                             id="name"
@@ -49,6 +50,7 @@ const CreateAccount = () => {
                             value={name}
                             onChange={e => setName(e.target.value)}
                             required
+                            autoComplete="off"
                         />
 
                         <InputBlock
@@ -59,6 +61,7 @@ const CreateAccount = () => {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                             required
+                            autoComplete="off"
                         />
 
                         <div className="dualInput">
@@ -85,6 +88,7 @@ const CreateAccount = () => {
                                 value={dept}
                                 onChange={e => setDept(e.target.value)}
                                 required
+                                autoComplete="off"
                             />
 
                             <InputBlock
@@ -95,6 +99,7 @@ const CreateAccount = () => {
                                 value={role}
                                 onChange={e => setRole(e.target.value)}
                                 required
+                                autoComplete="off"
                             />
                         </div>
 
@@ -106,6 +111,7 @@ const CreateAccount = () => {
                             value={password}
                             onChange={e => setPassword(e.target.value)}
                             required
+                            autoComplete="off"
                         />
 
                         <div className="button-container" >
@@ -122,4 +128,4 @@ const CreateAccount = () => {
     }
 }
 
-export default CreateAccount;
+export default CreateAdministrator;
