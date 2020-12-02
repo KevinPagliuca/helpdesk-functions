@@ -1,24 +1,13 @@
-import React from 'react';
-
-import { FaCamera } from 'react-icons/fa';
+import React, { useState } from 'react';
 
 import './styles.css';
 
-import userImg from '../../../assets/user.png';
+import Dropzone from '../../Dropzone';
 
 const AvatarImg = () => {
+    const [SelectedFile, setSelectedFile] = useState([]);
     return (
-        <div className="personal-image">
-            <label className="label">
-                <input type="file" />
-                <figure className="personal-figure">
-                    <img src={userImg} className="personal-avatar" alt="avatar" />
-                    <figcaption className="personal-figcaption">
-                        <FaCamera />
-                    </figcaption>
-                </figure>
-            </label>
-        </div>
+        <Dropzone onFileUploaded={setSelectedFile} />
     );
 }
 

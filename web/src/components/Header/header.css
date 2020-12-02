@@ -23,6 +23,7 @@
 #header .navbar .logo img {
     width: 200px;
     height: 70px;
+    border-radius: 50%;
 }
 
 #header .navbar .nav-container {

@@ -2,13 +2,13 @@ import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.png';
-import userImg from '../../assets/user.png';
 
 import './header.css';
 
 const Header = () => {
     const history = useHistory();
     const admin = sessionStorage.getItem('admin');
+    const image_url = sessionStorage.getItem('image_url');
 
     async function handleLogout() {
         localStorage.clear();
@@ -34,7 +34,7 @@ const Header = () => {
                     </ul>
 
                     <div className="dropdown">
-                        <img src={userImg} alt="userImg" />
+                        <img src={image_url} alt="userImg" />
                         <div id="myDropdown" className="dropdown-content">
                             {!admin ?
                                 null

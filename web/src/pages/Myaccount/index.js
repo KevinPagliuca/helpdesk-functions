@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 
 import InputBlock from '../../components/InputBlock';
 import accountSvg from '../../assets/account.svg';
-import AvatarImg from '../../components/Styles/Avatar';
+import Dropzone from '../../components/Dropzone';
 
 import './myaccount.css';
 
@@ -15,6 +15,8 @@ const Myaccount = () => {
     const [email, setEmail] = useState(localStorage.getItem('user_email'));
     const [dept, setDept] = useState(localStorage.getItem('user_dept'));
     const [role, setRole] = useState(localStorage.getItem('user_role'));
+
+    const [SelectedFile, setSelectedFile] = useState([]);
 
     const session = sessionStorage.getItem('status');
 
@@ -26,7 +28,7 @@ const Myaccount = () => {
                     <div className="userdata">
                         <h3>Minha conta</h3>
                         <form>
-                            <AvatarImg />
+                        <Dropzone onFileUploaded={setSelectedFile} />
 
                             <InputBlock
                                 id="name"
