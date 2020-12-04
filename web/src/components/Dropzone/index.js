@@ -10,7 +10,7 @@ function Dropzone({ onFileUploaded }) {
     const onDrop = useCallback(acceptedFiles => {
         // Do something with the files
         const file = acceptedFiles[0];
-
+        
         const fileUrl = URL.createObjectURL(file);
 
         setSelectedFileUrl(fileUrl);

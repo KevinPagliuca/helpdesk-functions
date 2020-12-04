@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const fs = require('fs');
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -14,7 +15,7 @@ module.exports = {
 
         const serializedUser = {
             ...user,
-            image_url: `http://192.168.230.115:3333/uploads/${user.avatar}`,
+            image_url: `http://192.168.230.115:3333/uploads/user-imgs/${user.avatar}`,
         };
 
         return res.json(serializedUser);
@@ -72,9 +73,11 @@ module.exports = {
             name,
             email,
             dept,
-            role,
-            password
+            role
         } = req.body;
+
+        global.user_id = req.headers.user_id;  
+        console.log(global.user_id);      
 
         var date = new Date();
         const DataHoje = date.toLocaleString();
@@ -85,11 +88,12 @@ module.exports = {
             email,
             dept,
             role,
-            password,
             updated_at: DataHoje
         };
 
-        const updateUser = await connection('users').update(user);
+        const updateUser = await connection('users')
+            .where('email', email)
+            .update(user)
 
         return res.json(updateUser);
 
@@ -155,9 +159,9 @@ module.exports = {
 
             if (match) {
 
-                const serializedUser = {
+                const serializedUser = {                    
                     ...consult,
-                    image_url: `http://192.168.230.115:3333/uploads/${consult.avatar}`,
+                    image_url: `http://192.168.230.115:3333/uploads/user-imgs/${consult.avatar}`,
                 };
                 return res.json(serializedUser);
             } else {

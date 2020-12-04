@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { FaLock, FaUnlock } from 'react-icons/fa';
 
@@ -10,15 +10,62 @@ import Dropzone from '../../components/Dropzone';
 
 import './myaccount.css';
 
+import api from '../../services/api';
+
 const Myaccount = () => {
     const [name, setName] = useState(localStorage.getItem('user_name'));
     const [email, setEmail] = useState(localStorage.getItem('user_email'));
     const [dept, setDept] = useState(localStorage.getItem('user_dept'));
     const [role, setRole] = useState(localStorage.getItem('user_role'));
-
+    const id = localStorage.getItem('user_id');
+    const session = sessionStorage.getItem('status');
     const [SelectedFile, setSelectedFile] = useState([]);
 
-    const session = sessionStorage.getItem('status');
+    const [formData, setFormData] = useState({
+        name: name,
+        email: email,
+        dept: dept,
+        role: role
+    });
+
+    useEffect(() => {
+        setFormData({
+            name: name,
+            email: email,
+            dept: dept,
+            role: role
+        });
+    }, [name, email, dept, role]);
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        console.log(formData)
+        const { name, email, dept, role } = formData;
+
+        const data = new FormData();
+
+        data.append('name', name);
+        data.append('email', email);
+        data.append('dept', dept);
+        data.append('role', role);
+
+        if (SelectedFile) {
+            data.append('avatar', SelectedFile);
+            data.append('user_id', name);
+        }
+
+        await api.put('updateUser', data, {
+            headers: {
+                user_id: id
+            }
+        }).then((res) => {
+
+                alert('Sucesso ' + res);
+            }).catch((err) => {
+                alert(err);
+            });
+    }
+
 
     if (session) {
         return (
@@ -27,11 +74,12 @@ const Myaccount = () => {
                 <main className="container">
                     <div className="userdata">
                         <h3>Minha conta</h3>
-                        <form>
-                        <Dropzone onFileUploaded={setSelectedFile} />
+                        <form onSubmit={handleSubmit}>
+                            <Dropzone onFileUploaded={setSelectedFile} />
 
                             <InputBlock
                                 id="name"
+                                name="name"
                                 label="Nome Completo"
                                 type="text"
                                 value={name}
@@ -40,6 +88,7 @@ const Myaccount = () => {
                             />
                             <InputBlock
                                 id="email"
+                                name="email"
                                 label="Email"
                                 type="email"
                                 value={email}
@@ -49,6 +98,7 @@ const Myaccount = () => {
 
                             <InputBlock
                                 id="dept"
+                                name="dept"
                                 label="Departamento"
                                 type="text"
                                 value={dept}
@@ -58,6 +108,7 @@ const Myaccount = () => {
 
                             <InputBlock
                                 id="role"
+                                name="role"
                                 label="Cargo"
                                 type="text"
                                 value={role}
@@ -67,13 +118,13 @@ const Myaccount = () => {
 
                             <div className="button-container">
                                 {name === localStorage.getItem('user_name')
-                                &&
-                                email === localStorage.getItem('user_email')
-                                &&
-                                dept === localStorage.getItem('user_dept')
-                                &&
-                                role === localStorage.getItem('user_role')
-                                ?
+                                    &&
+                                    email === localStorage.getItem('user_email')
+                                    &&
+                                    dept === localStorage.getItem('user_dept')
+                                    &&
+                                    role === localStorage.getItem('user_role')
+                                    ?
                                     <button type="submit" disabled><FaLock size={22} />Salvar</button>
                                     :
                                     <button type="submit"><FaUnlock size={22} />Salvar</button>
