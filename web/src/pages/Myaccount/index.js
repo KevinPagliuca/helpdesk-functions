@@ -35,11 +35,16 @@ const Myaccount = () => {
             dept: dept,
             role: role
         });
-    }, [name, email, dept, role]);
+
+        if (SelectedFile.length === 0) {
+            return;
+        } else {
+            document.getElementById('changeData').removeAttribute('disabled');
+        }
+    }, [name, email, dept, role, SelectedFile]);
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(formData)
         const { name, email, dept, role } = formData;
 
         const data = new FormData();
@@ -51,7 +56,6 @@ const Myaccount = () => {
 
         if (SelectedFile) {
             data.append('avatar', SelectedFile);
-            data.append('user_id', name);
         }
 
         await api.put('updateUser', data, {
@@ -59,13 +63,18 @@ const Myaccount = () => {
                 user_id: id
             }
         }).then((res) => {
-
-                alert('Sucesso ' + res);
-            }).catch((err) => {
-                alert(err);
-            });
+            localStorage.setItem('user_name', res.data.name);
+            localStorage.setItem('user_dept', res.data.dept);
+            localStorage.setItem('user_role', res.data.role);
+            if (SelectedFile) {
+                sessionStorage.setItem('image_url', 'http://192.168.230.115:3333/uploads/user-imgs/' + res.data.avatar);
+            }
+            alert('Alterado com sucesso!');
+            window.location.reload();
+        }).catch((err) => {
+            alert(err);
+        });
     }
-
 
     if (session) {
         return (
@@ -94,6 +103,7 @@ const Myaccount = () => {
                                 value={email}
                                 onChange={e => setEmail(e.target.value)}
                                 required
+                                readOnly
                             />
 
                             <InputBlock
@@ -125,9 +135,9 @@ const Myaccount = () => {
                                     &&
                                     role === localStorage.getItem('user_role')
                                     ?
-                                    <button type="submit" disabled><FaLock size={22} />Salvar</button>
+                                    <button id="changeData" type="submit" disabled><FaLock size={22} />Salvar</button>
                                     :
-                                    <button type="submit"><FaUnlock size={22} />Salvar</button>
+                                    <button id="changeData" type="submit"><FaUnlock size={22} />Salvar</button>
                                 }
                             </div>
 

@@ -76,26 +76,58 @@ module.exports = {
             role
         } = req.body;
 
-        global.user_id = req.headers.user_id;  
-        console.log(global.user_id);      
+        global.user_id = req.headers.user_id;
 
         var date = new Date();
         const DataHoje = date.toLocaleString();
 
-        const user = {
-            avatar: req.file.filename,
-            name,
-            email,
-            dept,
-            role,
-            updated_at: DataHoje
-        };
+        const consult = await connection('users')
+            .select('*')
+            .where('id', global.user_id)
+            .first();
 
-        const updateUser = await connection('users')
-            .where('email', email)
-            .update(user)
+        if (consult) {
+            if (req.file !== undefined) {
+                const user = {
+                    avatar: req.file.filename,
+                    name,
+                    email,
+                    dept,
+                    role,
+                    updated_at: DataHoje
+                };
 
-        return res.json(updateUser);
+                await connection('users')
+                    .where('id', global.user_id)
+                    .update(user);
+
+                const updatedUser = await connection('users')
+                    .select('*')
+                    .where('id', global.user_id)
+                    .first();
+                return res.json(updatedUser);
+            } else {
+                const user = {
+                    name,
+                    email,
+                    dept,
+                    role,
+                    updated_at: DataHoje
+                };
+
+                await connection('users')
+                    .where('id', global.user_id)
+                    .update(user);
+
+                const updatedUser = await connection('users')
+                    .select('*')
+                    .where('id', global.user_id)
+                    .first();
+                return res.json(updatedUser);
+            }
+        } else {
+            return res.json({ Error: 'Não sabemos oque aconteceu :(' })
+        }
 
     },
 
@@ -159,7 +191,7 @@ module.exports = {
 
             if (match) {
 
-                const serializedUser = {                    
+                const serializedUser = {
                     ...consult,
                     image_url: `http://192.168.230.115:3333/uploads/user-imgs/${consult.avatar}`,
                 };
